@@ -1,1 +1,0 @@
-import{_ as a,c as n,o,a as s}from"./app.e489fcf4.js";const m=JSON.parse('{"title":"Awards and honours","description":"","frontmatter":{},"headers":[],"relativePath":"Awards and honours.md"}'),t={name:"Awards and honours.md"},e=s("",12),r=[e];function d(p,i,u,c,h,_){return o(),n("div",null,r)}const f=a(t,[["render",d]]);export{m as __pageData,f as default};
