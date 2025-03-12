@@ -41,32 +41,10 @@ export default {
       { icon: 'Scholar', link: 'https://scholar.google.com/citations?user=34ISQHEAAAAJ&hl=zh-CN&oi=ao' }
     ],
 
-    // 更新后的页脚配置
+    // 🔹 添加页脚信息
     footer: {
-      message: '📬 Follow my research journey | <a href="/feed.xml">RSS Feed</a>',
-      copyright: '© 2025 Ruihong Xie | Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>'
-    },
-
-    // 增强的社交链接配置
-    socialLinks: [
-      { 
-        icon: 'researchgate',
-        link: 'https://www.researchgate.net/profile/Ruihong-Xie',
-        ariaLabel: 'ResearchGate Profile'
-      },
-      {
-        icon: 'google-scholar',
-        link: 'https://scholar.google.com/citations?user=34ISQHEAAAAJ',
-        ariaLabel: 'Google Scholar Profile'
-      }
-    ]
-  },
-
-  // 新增 head 配置
-  head: [
-    ['link', { 
-      rel: 'stylesheet', 
-      href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' 
-    }]
-  ]
+      message: 'This site is powered by VitePress.',
+      copyright: '© 2025 Ruihong Xie. All rights reserved.'
+    }
+  }
 }
