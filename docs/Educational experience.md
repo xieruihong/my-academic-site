@@ -1,19 +1,23 @@
-# Educational experience
+# Educational Experience
 
-**2025/2-present** 
+## University of Toronto, Civil Engineering
+**Visiting Ph.D Candidate**  
+**2025/2 - present**  
+- Focus: Structural Vibration Control  
+- Collaborating with Professor Oya Mercan, Department of Civil & Mineral Engineering
 
-University of Toronto, Civil Engineering, Visiting Ph.D candidate
+## Tongji University, Civil and Hydraulic Engineering  
+**Full-time Ph.D Candidate**  
+**2022/9 - present**  
+- Research Area: Wind-Induced Vibration Control  
+- Supervising Professor: Lin Zhao
 
-**2022/9-present** 
+## Hunan University, Civil Engineering  
+**Master’s Degree**  
+**2019/9 - 2022/7**  
+- Focus: Structural impact dynamic behavior and protection
 
-Tongji University, Civil and Hydraulic Engineering, Full-time Ph.D candidate
-
-**2019/9-2022/7** 
-
-Hunan University, Civil Engineering, Master
-
-**2015/9-2019/7** 
-
-Northwest A&F University, Civil Engineering, Bachelor
-
-
+## Northwest A&F University, Civil Engineering  
+**Bachelor’s Degree**  
+**2015/9 - 2019/7**  
+- Specialization: Bridge engineering
