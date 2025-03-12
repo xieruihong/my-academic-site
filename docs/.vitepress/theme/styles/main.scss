@@ -1,0 +1,28 @@
+// 基础变量
+:root {
+  --vp-c-brand: #2c3e50;
+  --vp-c-brand-light: #34495e;
+  --vp-font-family-base: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+// 导航栏优化
+.VPNavBar {
+  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.9) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+// 侧边栏优化
+.VPSidebar {
+  padding: 1rem;
+  border-right: 1px solid rgba(0,0,0,0.05);
+}
+
+// 响应式布局
+@media (min-width: 960px) {
+  .VPContent {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+  }
+} 

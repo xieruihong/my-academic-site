@@ -8,8 +8,10 @@
     "serve": "vitepress serve docs"
   },
   "devDependencies": {
-    "vue": "3.2.44",
-    "vitepress": "1.0.0-alpha.28"
+    "gh-pages": "^6.3.0",
+    "tailwindcss": "^4.0.12",
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.13"
   },
   "pnpm": {
     "peerDependencyRules": {
@@ -17,5 +19,10 @@
         "@algolia/client-search"
       ]
     }
+  },
+  "dependencies": {
+    "@vueuse/shared": "^13.0.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3"
   }
 }
