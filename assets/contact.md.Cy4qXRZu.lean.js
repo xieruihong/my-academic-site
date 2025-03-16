@@ -1,0 +1,1 @@
+import{_ as t,c as e,o,a0 as r}from"./chunks/framework.uhmD4GUP.js";const d=JSON.parse('{"title":"Contact","description":"","frontmatter":{},"headers":[],"relativePath":"contact.md","filePath":"contact.md"}'),n={name:"contact.md"};function i(l,a,c,s,_,h){return o(),e("div",null,a[0]||(a[0]=[r("",4)]))}const u=t(n,[["render",i]]);export{d as __pageData,u as default};
