@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as a,ai as i}from"./chunks/framework.o6b_08w8.js";const u=JSON.parse('{"title":"Welcome to My Academic Site","description":"","frontmatter":{},"headers":[],"relativePath":"index.md","filePath":"index.md"}'),o={name:"index.md"},c=i("",3),r=[c];function n(s,d,l,_,m,p){return a(),t("div",null,r)}const S=e(o,[["render",n]]);export{u as __pageData,S as default};
