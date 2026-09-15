@@ -485,14 +485,13 @@ export default function Home() {
       <section id="about" className="section about-section">
         <div className="about-label">
           <p className="eyebrow">ABOUT</p>
-          <span className="large-index">01</span>
         </div>
         <div className="about-copy">
           <p className="lead-copy">
             My research connects <span>bridge wind engineering, nonlinear dynamics, and structural resilience</span> to keep long-span bridges safe, stable, and efficient.
           </p>
           <div className="about-columns">
-            <p>I am a PhD researcher at Tongji University and a visiting PhD researcher at the University of Toronto. My work focuses on the theory, design, and experimental validation of nonlinear energy sink inerters for controlling vortex-induced vibrations, buffeting, and flutter in bridges.</p>
+            <p>I graduated with a PhD in Civil Engineering from Tongji University on 20 August 2026. During my doctoral studies, I conducted visiting research at the University of Toronto. My work focuses on the theory, design, and experimental validation of nonlinear energy sink inerters for controlling vortex-induced vibrations, buffeting, and flutter in bridges.</p>
             <p>Previously, I studied bridge impact dynamics and composite protective structures at Hunan University. I now explore coordinated vibration control and energy harvesting, bringing structural safety, device efficiency, and practical implementation into a common design framework.</p>
           </div>
           <div className="profile-links">
