@@ -510,6 +510,28 @@ a {
 .social-links { display: flex; justify-content: flex-end; gap: 1.4rem; }
 .social-links a:hover { color: var(--blue); }
 
+.visitor-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem 3rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--inverse-ink) 25%, transparent);
+}
+.visitor-counts { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; margin: 0; }
+.visitor-counts > div { min-width: 7.5rem; }
+.visitor-counts dt { font-size: .62rem; letter-spacing: .13em; text-transform: uppercase; }
+.visitor-counts dd { margin: .65rem 0 0; font: 400 1.65rem/1.1 Georgia, serif; font-variant-numeric: tabular-nums; }
+.visitor-info { max-width: 36rem; min-width: 0; font-size: .65rem; line-height: 1.7; color: color-mix(in srgb, var(--inverse-ink) 70%, transparent); }
+.visitor-info > p { margin: 0 0 .3rem; }
+.visitor-info summary { cursor: pointer; width: fit-content; text-decoration: underline; text-underline-offset: .2em; }
+.visitor-info details p { margin: .85rem 0 0; }
+.visitor-info a { text-decoration: underline; text-underline-offset: .2em; }
+.visitor-info a:hover, .visitor-info summary:hover { color: var(--inverse-ink); }
+.visitor-info summary:focus-visible, .visitor-info a:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+
 @media (max-width: 900px) {
   .site-header { grid-template-columns: 1fr auto; }
   .menu-toggle { display: grid; place-content: center; gap: 5px; }

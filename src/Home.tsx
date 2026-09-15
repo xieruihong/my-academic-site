@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import siteContentData from "../content/site-content.json";
+import VisitorStats from "./VisitorStats";
 
 type Publication = {
   id: number;
@@ -573,6 +574,7 @@ export default function Home() {
             <a href="#top">TOP ↑</a>
           </div>
         </div>
+        <VisitorStats />
       </footer>
     </main>
   );
