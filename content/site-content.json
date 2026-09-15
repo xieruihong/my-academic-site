@@ -1,17 +1,16 @@
 {
   "profile": {
     "name": "Ruihong Xie",
-    "chineseName": "谢瑞洪",
-    "title": "博士研究生 · 桥梁风工程与结构振动控制",
-    "affiliation": "同济大学 · 多伦多大学联合培养",
-    "location": "上海 / 多伦多",
+    "title": "PhD Researcher · Bridge Wind Engineering & Vibration Control",
+    "affiliation": "Tongji University · Visiting Research at the University of Toronto",
+    "location": "Shanghai / Toronto",
     "email": "xrh@tongji.edu.cn",
     "emailSecondary": "ruihong.xie@mail.utoronto.ca",
     "status": "OPEN TO RESEARCH COLLABORATION",
-    "statement": "面向大跨桥梁的风致振动问题，探索更轻、更强韧的非线性控制与振能利用方法。"
+    "statement": "Developing lightweight, resilient nonlinear control and energy-harvesting strategies for wind-induced vibrations in long-span bridges."
   },
   "links": {
-    "scholar": "https://scholar.google.com/citations?user=34ISQHEAAAAJ&hl=zh-CN",
+    "scholar": "https://scholar.google.com/citations?user=34ISQHEAAAAJ&hl=en",
     "orcid": "https://orcid.org/0000-0002-5086-0768",
     "legacySite": "https://xieruihong.github.io/my-academic-site/",
     "researchGate": "https://www.researchgate.net/profile/Ruihong-Xie",
@@ -21,55 +20,55 @@
     {
       "id": 19,
       "year": 2026,
-      "type": "审稿中",
+      "type": "Under review",
       "title": "Real-time hybrid simulation of nonlinear energy sink inerter-based buffeting mitigation of a long-span bridge with non-ideal inerter dynamics",
       "venue": "Structural Control and Health Monitoring · Under review",
       "authors": "Ruihong Xie, Muhammet Calayir, Oya Mercan, Lin Zhao*",
-      "abstract": "利用实时混合试验研究非理想惯容器动力学条件下，非线性能量阱惯容器对大跨桥梁抖振的控制。",
+      "abstract": "Real-time hybrid simulation of buffeting control in long-span bridges using nonlinear energy sink inerters with non-ideal inerter dynamics.",
       "tags": ["Under Review", "Real-time Hybrid Simulation", "Buffeting"],
       "citation": "Xie, R., Calayir, M., Mercan, O., & Zhao, L. (2026). Real-time hybrid simulation of nonlinear energy sink inerter-based buffeting mitigation of a long-span bridge with non-ideal inerter dynamics. Structural Control and Health Monitoring. Under review."
     },
     {
       "id": 20,
       "year": 2026,
-      "type": "审稿中",
+      "type": "Under review",
       "title": "Wind-induced ultra-low-frequency vibration energy harvesting in wind-sensitive structures using nonlinear energy sink-assisted strategies",
       "venue": "Journal of Wind Engineering and Industrial Aerodynamics · Under review",
       "authors": "Ruihong Xie, Muhammet Calayir, Oya Mercan, Lin Zhao*",
-      "abstract": "研究借助非线性能量阱策略，从风敏结构的风致超低频振动中获取能量。",
+      "abstract": "Nonlinear energy sink strategies for harvesting energy from wind-induced, ultra-low-frequency vibrations in wind-sensitive structures.",
       "tags": ["Under Review", "Energy Harvesting", "Ultra-low Frequency"],
       "citation": "Xie, R., Calayir, M., Mercan, O., & Zhao, L. (2026). Wind-induced ultra-low-frequency vibration energy harvesting in wind-sensitive structures using nonlinear energy sink-assisted strategies. Journal of Wind Engineering and Industrial Aerodynamics. Under review."
     },
     {
       "id": 21,
       "year": 2026,
-      "type": "审稿中",
+      "type": "Under review",
       "title": "State of the art review on wind-induced vibration mitigation of bridges using passive mechanic control strategies",
       "venue": "Engineering Structures · Under review",
       "authors": "Lin Zhao, Ruihong Xie*, Wei Cui, Kun Xu, Lin Chen, Xingliang Gao, Kaiming Bi, Xugang Hua, Oya Mercan, Dapeng Mei",
-      "abstract": "系统综述采用被动机械控制策略缓解桥梁风致振动的研究进展。",
+      "abstract": "A state-of-the-art review of passive mechanical strategies for mitigating wind-induced bridge vibrations.",
       "tags": ["Under Review", "State-of-the-art Review", "Passive Control"],
       "citation": "Zhao, L., Xie, R., Cui, W., Xu, K., Chen, L., Gao, X., Bi, K., Hua, X., Mercan, O., & Mei, D. (2026). State of the art review on wind-induced vibration mitigation of bridges using passive mechanic control strategies. Engineering Structures. Under review."
     },
     {
       "id": 22,
       "year": 2026,
-      "type": "审稿中",
+      "type": "Under review",
       "title": "Vortex-induced vibration mitigation for an ultra-long stay cable using a nonlinear energy sink",
       "venue": "Engineering Structures · Under review",
       "authors": "Peng Liu, Ruihong Xie, Xuejing Huo, Dapeng Mei*, Yongle Li, Lin Zhao",
-      "abstract": "研究利用非线性能量阱缓解超长斜拉索涡激振动的方法。",
+      "abstract": "Mitigation of vortex-induced vibrations in ultra-long stay cables using nonlinear energy sinks.",
       "tags": ["Under Review", "Stay Cable", "Vortex-induced Vibration"],
       "citation": "Liu, P., Xie, R., Huo, X., Mei, D., Li, Y., & Zhao, L. (2026). Vortex-induced vibration mitigation for an ultra-long stay cable using a nonlinear energy sink. Engineering Structures. Under review."
     },
     {
       "id": 1,
       "year": 2026,
-      "type": "论文",
+      "type": "Journal article",
       "title": "Enhancement of wind resistance in long-span bridges against buffeting and flutter using nonlinear energy sink inerters",
       "venue": "Journal of Wind Engineering and Industrial Aerodynamics, 273: 106455",
       "authors": "Ruihong Xie, Oya Mercan, Peng Liu, Kun Xu, Lin Chen, Lin Zhao*",
-      "abstract": "围绕大跨桥梁抖振与颤振问题，研究非线性能量阱惯容器的抗风性能提升路径。",
+      "abstract": "Improving the buffeting and flutter performance of long-span bridges using nonlinear energy sink inerters.",
       "tags": ["Buffeting", "Flutter", "NESI"],
       "citation": "Xie, R., Mercan, O., Liu, P., Xu, K., Chen, L., & Zhao, L. (2026). Enhancement of wind resistance in long-span bridges against buffeting and flutter using nonlinear energy sink inerters. Journal of Wind Engineering and Industrial Aerodynamics, 273, 106455.",
       "doi": "10.1016/j.jweia.2026.106455",
@@ -78,11 +77,11 @@
     {
       "id": 2,
       "year": 2026,
-      "type": "论文",
+      "type": "Journal article",
       "title": "Experimental investigation of vortex-induced vibration mitigation of a long-span bridge with nonlinear energy sink inerter using real-time hybrid simulation",
       "venue": "Engineering Structures, 357: 122529",
       "authors": "Ruihong Xie, Muhammet Calayir, Oya Mercan, Lin Zhao*",
-      "abstract": "通过实时混合试验研究非线性能量阱惯容器对大跨桥梁涡激振动的控制效果。",
+      "abstract": "Real-time hybrid experiments investigating vortex-induced vibration mitigation in a long-span bridge using a nonlinear energy sink inerter.",
       "tags": ["Real-time Hybrid Simulation", "VIV", "NESI"],
       "citation": "Xie, R., Calayir, M., Mercan, O., & Zhao, L. (2026). Experimental investigation of vortex-induced vibration mitigation of a long-span bridge with nonlinear energy sink inerter using real-time hybrid simulation. Engineering Structures, 357, 122529.",
       "doi": "10.1016/j.engstruct.2026.122529",
@@ -91,11 +90,11 @@
     {
       "id": 3,
       "year": 2026,
-      "type": "论文",
+      "type": "Journal article",
       "title": "Vortex-induced vibration mitigation and design optimization of a long-span bridge using multiple nonlinear energy sink inerters",
       "venue": "Structural Control and Health Monitoring, 2026(1): 3090584",
       "authors": "Ruihong Xie, Oya Mercan, Kun Xu, Lin Zhao*",
-      "abstract": "研究多非线性能量阱惯容器配置下的大跨桥梁涡激振动控制与设计优化。",
+      "abstract": "Vortex-induced vibration mitigation and design optimization for long-span bridges equipped with multiple nonlinear energy sink inerters.",
       "tags": ["Design Optimization", "VIV", "Multiple NESIs"],
       "citation": "Xie, R., Mercan, O., Xu, K., & Zhao, L. (2026). Vortex-induced vibration mitigation and design optimization of a long-span bridge using multiple nonlinear energy sink inerters. Structural Control and Health Monitoring, 2026(1), 3090584.",
       "doi": "10.1155/stc/3090584",
@@ -104,11 +103,11 @@
     {
       "id": 4,
       "year": 2026,
-      "type": "论文",
+      "type": "Journal article",
       "title": "Design strategy of nonlinear energy sink inerter for vortex-induced vibration mitigation of long-span bridges",
       "venue": "Journal of Structural Engineering, 152(5): 04026032",
       "authors": "Ruihong Xie, Lin Zhao*, Kun Xu, Tingshu Han, Teng Ma",
-      "abstract": "建立面向大跨桥梁涡激振动控制的非线性能量阱惯容器设计策略。",
+      "abstract": "A design strategy for nonlinear energy sink inerters to mitigate vortex-induced vibrations in long-span bridges.",
       "tags": ["Design Strategy", "Long-span Bridge", "NESI"],
       "citation": "Xie, R., Zhao, L., Xu, K., Han, T., & Ma, T. (2026). Design strategy of nonlinear energy sink inerter for vortex-induced vibration mitigation of long-span bridges. Journal of Structural Engineering, 152(5), 04026032.",
       "doi": "10.1061/JSENDH.STENG-15539"
@@ -116,11 +115,11 @@
     {
       "id": 5,
       "year": 2025,
-      "type": "论文",
+      "type": "Journal article",
       "title": "Control robustness of multi-modal vortex-induced vibration for bridges using nonlinear energy sink with additional displacement effect",
       "venue": "Journal of Vibration and Shock, 44(21): 107–115",
       "authors": "Ruihong Xie, Kun Xu, Xingliang Gao, Lin Zhao*",
-      "abstract": "讨论附加位移效应下非线性能量阱对桥梁多模态涡振控制的鲁棒性。",
+      "abstract": "Robustness of multimodal bridge vortex-induced vibration control using nonlinear energy sinks with additional displacement effects.",
       "tags": ["Robustness", "Multi-modal VIV", "Nonlinear Control"],
       "citation": "Xie, R., Xu, K., Gao, X., & Zhao, L. (2025). Control robustness of multi-modal vortex-induced vibration for bridges using nonlinear energy sink with additional displacement effect. Journal of Vibration and Shock, 44(21), 107–115.",
       "doi": "10.13465/j.cnki.jvs.2025.21.011"
@@ -128,11 +127,11 @@
     {
       "id": 6,
       "year": 2025,
-      "type": "论文",
+      "type": "Journal article",
       "title": "Vortex-induced vibration mitigation in long-span bridges using a nonlinear energy sink inerter: Theoretical framework and application",
       "venue": "Journal of Wind Engineering and Industrial Aerodynamics, 265: 106193",
       "authors": "Ruihong Xie, Kun Xu, Peng Liu, Zilong Wang, Lin Zhao*",
-      "abstract": "提出面向大跨桥梁的非线性能量阱惯容器理论框架，并讨论工程应用。",
+      "abstract": "A theoretical framework and engineering applications for nonlinear energy sink inerters in long-span bridges.",
       "tags": ["Theoretical Framework", "VIV", "Application"],
       "citation": "Xie, R., Xu, K., Liu, P., Wang, Z., & Zhao, L. (2025). Vortex-induced vibration mitigation in long-span bridges using a nonlinear energy sink inerter: Theoretical framework and application. Journal of Wind Engineering and Industrial Aerodynamics, 265, 106193.",
       "doi": "10.1016/j.jweia.2025.106193",
@@ -141,11 +140,11 @@
     {
       "id": 7,
       "year": 2025,
-      "type": "论文",
+      "type": "Journal article",
       "title": "Vortex-induced vibration mitigation in a multi-span beam structure using a nonlinear energy sink inerter with supplementary force effects",
       "venue": "Applied Mathematical Modelling, 116306",
       "authors": "Lin Zhao, Ruihong Xie*, Kun Xu, Xingliang Gao",
-      "abstract": "研究补充力效应下非线性能量阱惯容器对多跨梁结构涡激振动的控制。",
+      "abstract": "Vortex-induced vibration mitigation in multi-span beams using nonlinear energy sink inerters with supplementary force effects.",
       "tags": ["Multi-span Beam", "Supplementary Force", "NESI"],
       "citation": "Zhao, L., Xie, R., Xu, K., & Gao, X. (2025). Vortex-induced vibration mitigation in a multi-span beam structure using a nonlinear energy sink inerter with supplementary force effects. Applied Mathematical Modelling, 116306.",
       "doi": "10.1016/j.apm.2025.116306"
@@ -153,11 +152,11 @@
     {
       "id": 8,
       "year": 2024,
-      "type": "论文",
+      "type": "Journal article",
       "title": "Multimodal vortex-induced vibration mitigation and design approach of bistable nonlinear energy sink inerter on bridge structure",
       "venue": "Journal of Infrastructure Intelligence and Resilience, 3(4): 100123",
       "authors": "Ruihong Xie, Kun Xu, Houjun Kang, Lin Zhao*",
-      "abstract": "面向桥梁多模态涡振，研究双稳态非线性能量阱惯容器的控制与设计方法。",
+      "abstract": "Control and design of bistable nonlinear energy sink inerters for multimodal vortex-induced vibrations in bridges.",
       "tags": ["Bistable NESI", "Multimodal VIV", "Bridge"],
       "citation": "Xie, R., Xu, K., Kang, H., & Zhao, L. (2024). Multimodal vortex-induced vibration mitigation and design approach of bistable nonlinear energy sink inerter on bridge structure. Journal of Infrastructure Intelligence and Resilience, 3(4), 100123.",
       "doi": "10.1016/j.iintel.2024.100123"
@@ -165,11 +164,11 @@
     {
       "id": 9,
       "year": 2023,
-      "type": "论文",
+      "type": "Journal article",
       "title": "Aerodynamic characteristics of a streamlined box girder under shear flow considering oncoming turbulence",
       "venue": "Physics of Fluids, 35(9): 095122",
       "authors": "Lin Zhao, Ruihong Xie*, Hanjie Huang, Xingfei Yan, Shuyang Cao, Yaojun Ge",
-      "abstract": "研究来流湍流条件下剪切流中流线型箱梁的气动特性。",
+      "abstract": "Aerodynamic characteristics of streamlined box girders in shear flow with oncoming turbulence.",
       "tags": ["Shear Flow", "Turbulence", "Box Girder"],
       "citation": "Zhao, L., Xie, R., Huang, H., Yan, X., Cao, S., & Ge, Y. (2023). Aerodynamic characteristics of a streamlined box girder under shear flow considering oncoming turbulence. Physics of Fluids, 35(9), 095122.",
       "doi": "10.1063/5.0147082"
@@ -177,11 +176,11 @@
     {
       "id": 10,
       "year": 2023,
-      "type": "论文",
+      "type": "Journal article",
       "title": "Crashworthiness and energy absorption of UHPFRC-steel composite sandwich structures under impact loading",
       "venue": "Composite Structures, 311: 116813",
       "authors": "Wei Fan*, Ruihong Xie, Michael Davidson, Hanfeng Yin, Keyu Lai, Qinglin Wu",
-      "abstract": "研究冲击荷载下 UHPFRC-钢复合夹层结构的抗撞与吸能性能。",
+      "abstract": "Crashworthiness and energy absorption of UHPFRC–steel composite sandwich structures under impact loading.",
       "tags": ["UHPFRC", "Impact", "Energy Absorption"],
       "citation": "Fan, W., Xie, R., Davidson, M., Yin, H., Lai, K., & Wu, Q. (2023). Crashworthiness and energy absorption of UHPFRC-steel composite sandwich structures under impact loading. Composite Structures, 311, 116813.",
       "doi": "10.1016/j.compstruct.2023.116813"
@@ -189,11 +188,11 @@
     {
       "id": 11,
       "year": 2022,
-      "type": "论文",
+      "type": "Journal article",
       "title": "Crushing behavior and protective performance of varying cores in UHPFRC-steel-foam sandwich structures: Experiment, optimal selection and application",
       "venue": "Thin-Walled Structures, 172: 108886",
       "authors": "Ruihong Xie, Wei Fan*, Yaobei He, Bin Liu, Xudong Shao",
-      "abstract": "通过试验与优选分析，研究不同芯层 UHPFRC-钢-泡沫夹层结构的压溃和防护性能。",
+      "abstract": "Experimental evaluation and core selection for the crushing and protective performance of UHPFRC–steel–foam sandwich structures.",
       "tags": ["UHPFRC", "Sandwich Structure", "Protection"],
       "citation": "Xie, R., Fan, W., He, Y., Liu, B., & Shao, X. (2022). Crushing behavior and protective performance of varying cores in UHPFRC-steel-foam sandwich structures: Experiment, optimal selection and application. Thin-Walled Structures, 172, 108886.",
       "doi": "10.1016/j.tws.2022.108886"
@@ -201,11 +200,11 @@
     {
       "id": 12,
       "year": 2020,
-      "type": "论文",
+      "type": "Journal article",
       "title": "Dynamic behavior and vulnerability analysis of bridge columns with different cross-sectional shapes under rockfall impacts",
       "venue": "Structures, 26: 471–486",
       "authors": "Ruihong Xie, Wei Fan*, Bin Liu, Dongjie Shen",
-      "abstract": "比较不同截面桥墩在落石冲击下的动力响应与易损性。",
+      "abstract": "Dynamic response and vulnerability of bridge columns with different cross-sectional shapes under rockfall impacts.",
       "tags": ["Rockfall Impact", "Bridge Column", "Vulnerability"],
       "citation": "Xie, R., Fan, W., Liu, B., & Shen, D. (2020). Dynamic behavior and vulnerability analysis of bridge columns with different cross-sectional shapes under rockfall impacts. Structures, 26, 471–486.",
       "doi": "10.1016/j.istruc.2020.04.042"
@@ -213,44 +212,44 @@
     {
       "id": 23,
       "year": 2026,
-      "type": "会议",
+      "type": "Conference",
       "title": "Energy harvesting of wind-induced ultra-low-frequency vibrations using nonlinear energy sink strategies",
       "venue": "8th International Symposium on Computational Wind Engineering, London, Canada",
       "authors": "Ruihong Xie*, Muhammet Calayir, Oya Mercan, Lin Zhao",
-      "abstract": "在第八届计算风工程国际研讨会上汇报非线性能量阱策略对风致超低频振动能量的获取。",
+      "abstract": "Presentation at the 8th International Symposium on Computational Wind Engineering on harvesting wind-induced, ultra-low-frequency vibration energy using nonlinear energy sink strategies.",
       "tags": ["CWE 2026", "Energy Harvesting", "Ultra-low Frequency"],
       "citation": "Xie, R., Calayir, M., Mercan, O., & Zhao, L. (2026). Energy harvesting of wind-induced ultra-low-frequency vibrations using nonlinear energy sink strategies. 8th International Symposium on Computational Wind Engineering, London, Canada."
     },
     {
       "id": 13,
       "year": 2025,
-      "type": "会议",
+      "type": "Conference",
       "title": "Optimal design methods for vortex-induced vibration mitigation using a nonlinear energy sink inerter in long-span bridges",
       "venue": "22nd National Structural Wind Engineering Conference & 8th National Wind Engineering Graduate Forum, Chongqing, China",
       "authors": "Ruihong Xie*, Kun Xu, Lin Zhao",
-      "abstract": "围绕大跨桥梁涡激振动，汇报非线性能量阱惯容器的优化设计方法。",
+      "abstract": "Optimal design of nonlinear energy sink inerters for vortex-induced vibration mitigation in long-span bridges.",
       "tags": ["Conference", "Optimal Design", "VIV"],
       "citation": "Xie, R., Xu, K., & Zhao, L. (2025). Optimal design methods for vortex-induced vibration mitigation using a nonlinear energy sink inerter in long-span bridges. 22nd National Structural Wind Engineering Conference & 8th National Wind Engineering Graduate Forum, Chongqing, China."
     },
     {
       "id": 24,
       "year": 2025,
-      "type": "会议",
+      "type": "Conference",
       "title": "Electromagnetic and electrostatic energy harvesting in a wind-excited tall building equipped with tuned mass damper inerter",
       "venue": "Sustainability: Transdisciplinary Theory, Practice, and Action Conference, Toronto, Canada",
       "authors": "Muhammet Calayir*, Ruihong Xie, Oya Mercan",
-      "abstract": "面向配备调谐质量阻尼惯容器的风致高层建筑，讨论电磁与静电能量收集。",
+      "abstract": "Electromagnetic and electrostatic energy harvesting in wind-excited tall buildings equipped with tuned mass damper inerters.",
       "tags": ["Conference", "Tall Building", "Energy Harvesting"],
       "citation": "Calayir, M., Xie, R., & Mercan, O. (2025). Electromagnetic and electrostatic energy harvesting in a wind-excited tall building equipped with tuned mass damper inerter. Sustainability: Transdisciplinary Theory, Practice, and Action Conference, Toronto, Canada."
     },
     {
       "id": 14,
       "year": 2024,
-      "type": "会议",
+      "type": "Conference",
       "title": "Mitigation of vortex-induced vibration in bridge structure using nonlinear energy sink inerter: Weight effect and compensational strategies",
       "venue": "International Conference on Engineering Structures, Springer Nature Singapore: 299–308",
       "authors": "Ruihong Xie*, Kun Xu, Lin Zhao",
-      "abstract": "讨论装置重量效应及其补偿策略，并面向桥梁结构涡激振动控制进行验证。",
+      "abstract": "Device weight effects and compensation strategies for vortex-induced vibration mitigation in bridges.",
       "tags": ["Conference", "Weight Effect", "NESI"],
       "citation": "Xie, R., Xu, K., & Zhao, L. (2024). Mitigation of vortex-induced vibration in bridge structure using nonlinear energy sink inerter: Weight effect and compensational strategies. International Conference on Engineering Structures. Springer Nature Singapore, 299–308.",
       "doi": "10.1007/978-981-96-4698-2_29"
@@ -258,210 +257,210 @@
     {
       "id": 25,
       "year": 2023,
-      "type": "会议",
+      "type": "Conference",
       "title": "Aerodynamic characteristics of a streamlined box girder under shear flow considering oncoming turbulence",
       "venue": "21st National Structural Wind Engineering Conference & 7th National Wind Engineering Graduate Forum, Changsha, China",
       "authors": "Ruihong Xie*, Lin Zhao, Yaojun Ge",
-      "abstract": "汇报来流湍流条件下剪切流中流线型箱梁的气动特性。",
+      "abstract": "Aerodynamic characteristics of streamlined box girders in shear flow with oncoming turbulence.",
       "tags": ["Conference", "Shear Flow", "Oncoming Turbulence"],
       "citation": "Xie, R., Zhao, L., & Ge, Y. (2023). Aerodynamic characteristics of a streamlined box girder under shear flow considering oncoming turbulence. 21st National Structural Wind Engineering Conference & 7th National Wind Engineering Graduate Forum, Changsha, China."
     },
     {
       "id": 15,
       "year": 2023,
-      "type": "会议",
+      "type": "Conference",
       "title": "Aerodynamic characteristics of a streamlined box girder under non-uniform shear flow with turbulence intensity",
       "venue": "16th International Conference on Wind Engineering, Florence, Italy",
       "authors": "Ruihong Xie*, Lin Zhao, Yaojun Ge",
-      "abstract": "在 ICWE16 汇报非均匀剪切流与湍流强度作用下流线型箱梁的气动特性。",
+      "abstract": "Presentation at ICWE16 on the aerodynamics of streamlined box girders under non-uniform shear flow and turbulence.",
       "tags": ["ICWE16", "Aerodynamics", "Box Girder"],
       "citation": "Xie, R., Zhao, L., & Ge, Y. (2023). Aerodynamic characteristics of a streamlined box girder under non-uniform shear flow with turbulence intensity. 16th International Conference on Wind Engineering, Florence, Italy."
     },
     {
       "id": 26,
       "year": 2022,
-      "type": "会议",
+      "type": "Conference",
       "title": "Hybrid simulation of rockfalls impact on bridge structure based on OpenSees-MATLAB-VecTor2",
       "venue": "International Conference on Intelligent Transportation, Big Data & Smart City (ICITBS), Hengyang, China",
       "authors": "Ruihong Xie*, Yungang Shi, Xu Huang, Wei Mao, Yaobei He, Wei Fan",
-      "abstract": "基于 OpenSees、MATLAB 与 VecTor2 开展落石冲击桥梁结构的混合仿真。",
+      "abstract": "Hybrid simulation of rockfall impacts on bridge structures using OpenSees, MATLAB, and VecTor2.",
       "tags": ["ICITBS", "Hybrid Simulation", "Rockfall Impact"],
       "citation": "Xie, R., Shi, Y., Huang, X., Mao, W., He, Y., & Fan, W. (2022). Hybrid simulation of rockfalls impact on bridge structure based on OpenSees-MATLAB-VecTor2. International Conference on Intelligent Transportation, Big Data & Smart City, Hengyang, China."
     },
     {
       "id": 27,
       "year": 2019,
-      "type": "会议",
+      "type": "Conference",
       "title": "Dynamic behaviors and reliability analysis of reinforced concrete bridge columns under rockfall impacts",
       "venue": "13th International Conference on Shock & Impact Loads on Structures, Guangzhou, China",
       "authors": "Wei Fan*, Ruihong Xie, Dongjie Shen",
-      "abstract": "研究落石冲击下钢筋混凝土桥墩的动力行为与可靠性。",
+      "abstract": "Dynamic behaviour and reliability of reinforced-concrete bridge columns under rockfall impacts.",
       "tags": ["Conference", "Bridge Column", "Reliability"],
       "citation": "Fan, W., Xie, R., & Shen, D. (2019). Dynamic behaviors and reliability analysis of reinforced concrete bridge columns under rockfall impacts. 13th International Conference on Shock & Impact Loads on Structures, Guangzhou, China."
     },
     {
       "id": 16,
       "year": 2025,
-      "type": "专利",
+      "type": "Patent",
       "title": "Integrated device for vibration control and energy harvesting",
       "venue": "China Patent CN202510943006.0 · Filed 2025.07.09 · Published 2025.09.19",
       "authors": "Ruihong Xie, Lin Zhao, Wei Cui, Fenghua Zhang",
-      "abstract": "面向结构振动控制与能量收集的一体化装置。",
+      "abstract": "An integrated device for structural vibration control and energy harvesting.",
       "tags": ["Patent", "Energy Harvesting", "Vibration Control"],
       "citation": "Xie, R., Zhao, L., Cui, W., & Zhang, F. (2025). Integrated device for vibration control and energy harvesting. China Patent CN202510943006.0. Filed July 9, 2025; published September 19, 2025."
     },
     {
       "id": 17,
       "year": 2025,
-      "type": "专利",
+      "type": "Patent",
       "title": "A multi-path vibration energy harvesting device",
       "venue": "China Patent CN202510831776.6 · Filed 2025.06.20 · Published 2025.09.16",
       "authors": "Ruihong Xie, Lin Zhao, Wei Cui, Lingyu Wan, Fenghua Zhang, Liwei Xue, Liguo Chen",
-      "abstract": "一种用于结构振动能量获取的多路径装置。",
+      "abstract": "A multi-path device for harvesting energy from structural vibrations.",
       "tags": ["Patent", "Multi-path", "Energy Harvesting"],
       "citation": "Xie, R., Zhao, L., Cui, W., Wan, L., Zhang, F., Xue, L., & Chen, L. (2025). A multi-path vibration energy harvesting device. China Patent CN202510831776.6. Filed June 20, 2025; published September 16, 2025."
     },
     {
       "id": 18,
       "year": 2025,
-      "type": "专利",
+      "type": "Patent",
       "title": "An integrated device for wideband vibration control and energy harvesting",
       "venue": "China Patent CN202510760121.4 · Filed 2025.06.09 · Published 2025.09.05",
       "authors": "Ruihong Xie, Lin Zhao, Wei Cui, Lingyu Wan, Fenghua Zhang",
-      "abstract": "面向宽频振动控制与能量收集的一体化装置。",
+      "abstract": "An integrated device for wideband vibration control and energy harvesting.",
       "tags": ["Patent", "Wideband", "Integrated Device"],
       "citation": "Xie, R., Zhao, L., Cui, W., Wan, L., & Zhang, F. (2025). An integrated device for wideband vibration control and energy harvesting. China Patent CN202510760121.4. Filed June 9, 2025; published September 5, 2025."
     },
     {
       "id": 28,
       "year": 2025,
-      "type": "专利",
+      "type": "Patent",
       "title": "Vibration reduction and excitation equipment and movable device mounting system",
       "venue": "China Patent CN202510662328.8 · Filed 2025.05.22 · Published 2025.09.09",
       "authors": "Lin Zhao, Ruihong Xie, Shihan Wang, Wei Cui, Fenghua Zhang, Liguo Chen, Liwei Xue",
-      "abstract": "面向振动控制、激励设备与可移动装置安装的一体化系统。",
+      "abstract": "An integrated system for vibration control, excitation equipment, and movable device mounting.",
       "tags": ["Patent", "Vibration Reduction", "Excitation Equipment"],
       "citation": "Zhao, L., Xie, R., Wang, S., Cui, W., Zhang, F., Chen, L., & Xue, L. (2025). Vibration reduction and excitation equipment and movable device mounting system. China Patent CN202510662328.8. Filed May 22, 2025; published September 9, 2025."
     },
     {
       "id": 29,
       "year": 2022,
-      "type": "专利",
+      "type": "Patent",
       "title": "A ship interception system and its application",
       "venue": "China Patent CN202210216216.6 · Filed 2022.03.07 · Published 2022.12.06",
       "authors": "Wei Fan, Wenbiao Sun, Ruihong Xie, Qinglin Wu, Xudong Shao",
-      "abstract": "用于船舶拦截与桥梁防撞防护的系统及应用。",
+      "abstract": "A ship interception system for protecting bridges against vessel collisions.",
       "tags": ["Patent", "Ship Interception", "Bridge Protection"],
       "citation": "Fan, W., Sun, W., Xie, R., Wu, Q., & Shao, X. (2022). A ship interception system and its application. China Patent CN202210216216.6. Filed March 7, 2022; published December 6, 2022."
     },
     {
       "id": 30,
       "year": 2021,
-      "type": "专利",
+      "type": "Patent",
       "title": "An anti collision device",
       "venue": "China Patent CN202110351352.1 · Filed 2021.03.31 · Published 2022.08.23",
       "authors": "Wei Fan, Wenbiao Sun, Ruihong Xie, Qinglin Wu, Xudong Shao",
-      "abstract": "用于结构与桥梁工程的防撞装置。",
+      "abstract": "An anti-collision device for structural and bridge protection.",
       "tags": ["Patent", "Anti-collision", "Protection"],
       "citation": "Fan, W., Sun, W., Xie, R., Wu, Q., & Shao, X. (2021). An anti collision device. China Patent CN202110351352.1. Filed March 31, 2021; published August 23, 2022."
     },
     {
       "id": 31,
       "year": 2021,
-      "type": "专利",
+      "type": "Patent",
       "title": "A steel box concrete combined anti ship collision device",
       "venue": "China Patent CN202120310476.0 · Filed 2021.02.03 · Published 2021.12.14",
       "authors": "Wei Fan, Ruihong Xie, Wenbiao Sun, Xudong Shao",
-      "abstract": "钢箱-混凝土组合式船舶防撞装置。",
+      "abstract": "A steel-box–concrete composite device for protection against ship collisions.",
       "tags": ["Patent", "Steel-concrete", "Ship Collision"],
       "citation": "Fan, W., Xie, R., Sun, W., & Shao, X. (2021). A steel box concrete combined anti ship collision device. China Patent CN202120310476.0. Filed February 3, 2021; published December 14, 2021."
     }
   ],
   "updates": [
-    { "date": "04.29", "year": "2026", "text": "非线性能量阱惯容器提升大跨桥梁抖振与颤振性能研究发表于 JWEIA", "kind": "PUBLICATION" },
-    { "date": "03.01", "year": "2026", "text": "实时混合试验验证大跨桥梁涡振控制的研究发表于 Engineering Structures", "kind": "PUBLICATION" },
-    { "date": "07.01", "year": "2025", "text": "获第八届全国风工程研究生论坛优秀论文一等奖", "kind": "AWARD" },
-    { "date": "11.01", "year": "2024", "text": "获国家自然科学基金项目资助，研究风振控制与能量收集协同方法", "kind": "GRANT" }
+    { "date": "04.29", "year": "2026", "text": "Research on improving the buffeting and flutter performance of long-span bridges using nonlinear energy sink inerters published in JWEIA.", "kind": "PUBLICATION" },
+    { "date": "03.01", "year": "2026", "text": "Research on real-time hybrid testing of bridge vortex-induced vibration control published in Engineering Structures.", "kind": "PUBLICATION" },
+    { "date": "07.01", "year": "2025", "text": "First Prize for Outstanding Paper at the 8th National Wind Engineering Graduate Forum.", "kind": "AWARD" },
+    { "date": "11.01", "year": "2024", "text": "Awarded National Natural Science Foundation of China funding for coordinated wind-vibration control and energy harvesting.", "kind": "GRANT" }
   ],
   "focusAreas": [
     {
       "index": "01",
-      "title": "风致振动控制",
+      "title": "Wind-induced Vibration Control",
       "en": "Wind-induced Vibration Control",
-      "text": "面向大跨桥梁的涡激振动、抖振与颤振，发展可解释、可设计的减振方案。"
+      "text": "Developing interpretable, design-oriented approaches to mitigate vortex-induced vibrations, buffeting, and flutter in long-span bridges."
     },
     {
       "index": "02",
-      "title": "非线性振动控制",
+      "title": "Nonlinear Vibration Control",
       "en": "Nonlinear Vibration Control",
-      "text": "聚焦非线性能量阱惯容器及其多模态、宽频与鲁棒控制机制。"
+      "text": "Nonlinear energy sink inerters and their multimodal, broadband, and robust control mechanisms."
     },
     {
       "index": "03",
-      "title": "振动能量收集",
+      "title": "Vibration Energy Harvesting",
       "en": "Vibration Energy Harvesting",
-      "text": "探索减振与能量获取的协同设计，让结构振动从风险转化为可利用资源。"
+      "text": "Coordinating vibration mitigation and energy harvesting to turn structural vibrations into a usable resource."
     },
     {
       "index": "04",
-      "title": "冲击动力与防护",
+      "title": "Impact Dynamics & Protection",
       "en": "Impact Dynamics & Protection",
-      "text": "研究落石、撞击等极端荷载下桥梁构件与复合防护结构的动力行为。"
+      "text": "Dynamic behaviour of bridge components and composite protective structures under rockfall, collision, and other extreme loads."
     }
   ],
   "education": [
     {
-      "period": "2025.02 — 至今",
+      "period": "Feb 2025 — Present",
       "institution": "University of Toronto",
-      "degree": "访问博士研究生 · Civil & Mineral Engineering",
-      "detail": "结构振动控制；合作导师 Oya Mercan 教授"
+      "degree": "Visiting PhD Researcher · Civil & Mineral Engineering",
+      "detail": "Structural vibration control; host supervisor: Prof. Oya Mercan"
     },
     {
-      "period": "2022.09 — 至今",
+      "period": "Sep 2022 — Present",
       "institution": "Tongji University",
-      "degree": "全日制博士研究生 · Civil Engineering",
-      "detail": "GPA 4.76/5；风致振动控制；导师赵林教授"
+      "degree": "PhD Researcher · Civil Engineering",
+      "detail": "GPA: 4.76/5; wind-induced vibration control; supervisor: Prof. Lin Zhao"
     },
     {
-      "period": "2019.09 — 2022.06",
+      "period": "Sep 2019 — Jun 2022",
       "institution": "Hunan University",
-      "degree": "硕士 · Civil Engineering",
-      "detail": "GPA 3.64/4；结构冲击动力行为与防护；导师樊伟教授"
+      "degree": "Master's Degree · Civil Engineering",
+      "detail": "GPA: 3.64/4; structural impact dynamics and protection; supervisor: Prof. Wei Fan"
     },
     {
-      "period": "2015.09 — 2019.06",
+      "period": "Sep 2015 — Jun 2019",
       "institution": "Northwest A & F University",
-      "degree": "学士 · Civil Engineering",
-      "detail": "GPA 3.7/4；桥梁工程方向"
+      "degree": "Bachelor's Degree · Civil Engineering",
+      "detail": "GPA: 3.7/4; bridge engineering"
     }
   ],
   "projects": [
     {
       "period": "2025 — 2027",
-      "title": "非线性能量阱风振控制与能量收集协同算法及应用",
-      "meta": "国家自然科学基金项目 · 524B2127 · 项目负责人"
+      "title": "Coordinated algorithms and applications for wind-induced vibration control and energy harvesting using nonlinear energy sinks",
+      "meta": "National Natural Science Foundation of China · 524B2127 · Principal Investigator"
     },
     {
       "period": "2022 — 2025",
-      "title": "大跨公路桥梁涡激共振控制关键技术与装备",
-      "meta": "国家重点研发计划 · 2022YFC3005302 · 参与人"
+      "title": "Key technologies and equipment for vortex-induced resonance control in long-span highway bridges",
+      "meta": "National Key R&D Program of China · 2022YFC3005302 · Project Participant"
     }
   ],
   "awards": [
-    { "year": "2026", "title": "同济大学优秀毕业生" },
-    { "year": "2025–2026", "title": "国家留学基金委高水平研究生公派留学奖学金" },
-    { "year": "2025", "title": "同济大学优秀博士生奖学金" },
-    { "year": "2025", "title": "第八届全国风工程研究生论坛优秀论文一等奖" },
-    { "year": "2024", "title": "同济大学土木工程学院奖励金" },
-    { "year": "2022", "title": "湖南省优秀硕士学位论文" },
-    { "year": "2022", "title": "湖南省优秀毕业生" },
-    { "year": "2022", "title": "硕士研究生国家奖学金" },
-    { "year": "2020", "title": "湖南大学优秀研究生" },
-    { "year": "2020", "title": "年度特等奖" },
-    { "year": "2019", "title": "推荐免试攻读研究生" },
-    { "year": "2019", "title": "本科优秀毕业论文 Top 100" },
-    { "year": "2018", "title": "本科生国家奖学金" },
-    { "year": "2017", "title": "校长奖学金" },
-    { "year": "2016", "title": "年度特等奖" }
+    { "year": "2026", "title": "Outstanding Graduate, Tongji University" },
+    { "year": "2025–2026", "title": "China Scholarship Council Scholarship for Overseas Postgraduate Study" },
+    { "year": "2025", "title": "Outstanding Doctoral Student Scholarship, Tongji University" },
+    { "year": "2025", "title": "First Prize for Outstanding Paper, 8th National Wind Engineering Graduate Forum" },
+    { "year": "2024", "title": "School of Civil Engineering Award, Tongji University" },
+    { "year": "2022", "title": "Outstanding Master's Thesis, Hunan Province" },
+    { "year": "2022", "title": "Outstanding Graduate, Hunan Province" },
+    { "year": "2022", "title": "National Scholarship for Master's Students" },
+    { "year": "2020", "title": "Outstanding Postgraduate Student, Hunan University" },
+    { "year": "2020", "title": "Annual Special Prize" },
+    { "year": "2019", "title": "Recommended for Postgraduate Admission without Entrance Examination" },
+    { "year": "2019", "title": "Top 100 Outstanding Undergraduate Theses" },
+    { "year": "2018", "title": "National Scholarship for Undergraduate Students" },
+    { "year": "2017", "title": "President's Scholarship" },
+    { "year": "2016", "title": "Annual Special Prize" }
   ]
 }

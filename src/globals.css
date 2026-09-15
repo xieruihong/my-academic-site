@@ -171,8 +171,10 @@ a {
 }
 
 .hero-prefix {
-  margin: 0 0 -.8vw .7vw;
-  font: italic 400 clamp(2.2rem, 4vw, 4.8rem)/1 Georgia, "Songti SC", serif;
+  margin: 0 0 2rem .7vw;
+  font: 400 .75rem/1.4 Arial, sans-serif;
+  letter-spacing: .18em;
+  text-transform: uppercase;
   color: var(--blue);
 }
 
@@ -228,6 +230,7 @@ a {
   padding-top: 1.15rem;
   display: grid;
   grid-template-columns: 1fr 1fr auto;
+  gap: 1.25rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: .61rem;
@@ -337,8 +340,7 @@ a {
   position: relative;
 }
 .focus-mark::after { content: ""; position: absolute; width: 1px; height: 22px; background: currentColor; transform: rotate(45deg); top: -4px; left: 7px; }
-.focus-card h3 { margin: auto 0 .4rem; font: 400 clamp(2.1rem, 3.2vw, 4rem)/1 Georgia, "Songti SC", serif; }
-.focus-en { margin: 0; font-size: .66rem; letter-spacing: .11em; text-transform: uppercase; }
+.focus-card h3 { margin: auto 0 .4rem; font: 400 clamp(1.65rem, 2.45vw, 3rem)/1.08 Georgia, serif; overflow-wrap: anywhere; }
 .focus-text { margin: 2.2rem 0; max-width: 22rem; color: var(--muted); font-size: .86rem; line-height: 1.75; }
 .focus-card:hover .focus-text { color: #dfe5ff; }
 .focus-card button { width: 100%; display: flex; justify-content: space-between; padding: 1rem 0; border: 0; border-top: 1px solid currentColor; background: transparent; color: inherit; cursor: pointer; font-size: .74rem; }
@@ -366,9 +368,9 @@ a {
 .feed-item a:hover { color: var(--blue); }
 .feed-item div span { color: var(--muted); font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; }
 .north-east { color: var(--blue); }
-.live-foot { display: flex; justify-content: space-between; margin-top: 1.25rem; color: var(--muted); font-size: .57rem; letter-spacing: .11em; }
+.live-foot { display: flex; flex-wrap: wrap; gap: .75rem 2rem; justify-content: space-between; margin-top: 1.25rem; color: var(--muted); font-size: .57rem; letter-spacing: .11em; }
 
-.publication-tools { display: flex; justify-content: space-between; gap: 2rem; margin-bottom: 2.4rem; }
+.publication-tools { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; margin-bottom: 2.4rem; }
 .search-box { min-width: 22rem; display: flex; align-items: center; gap: .7rem; padding: .75rem 0; border-bottom: 1px solid var(--ink); }
 .search-box span { font-size: 1.35rem; }
 .search-box input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: .8rem; }
@@ -488,11 +490,11 @@ a {
 .updates-list > article > span:last-child { color: var(--blue); }
 
 .site-footer { padding: 8rem 3.2vw 2rem; background: var(--inverse); color: var(--inverse-ink); }
-.footer-top { position: relative; min-height: 35rem; }
+.footer-top { position: relative; min-height: 35rem; padding-bottom: 3rem; }
 .footer-top .eyebrow { color: color-mix(in srgb, var(--inverse-ink) 58%, transparent); }
 .footer-top h2 { margin: 5rem 0 0; font: 400 clamp(4rem, 9vw, 10rem)/.88 Georgia, "Songti SC", serif; letter-spacing: -.06em; }
 .footer-top h2 em { color: var(--blue); }
-.email-button { position: absolute; right: 5vw; bottom: 3rem; width: 10rem; height: 10rem; border-radius: 50%; border: 0; display: flex; align-items: center; justify-content: center; gap: 1rem; background: var(--blue); color: white; cursor: pointer; transition: transform 180ms ease, background 180ms ease; }
+.email-button { position: relative; margin: 2.5rem 0 0 auto; width: 10rem; height: 10rem; border-radius: 50%; border: 0; display: flex; align-items: center; justify-content: center; gap: .45rem; font-size: .8rem; white-space: nowrap; background: var(--blue); color: white; cursor: pointer; transition: transform 180ms ease, background 180ms ease; }
 .email-button:hover { transform: scale(1.06) rotate(-3deg); background: var(--blue-deep); }
 .contact-lines {
   display: flex;
@@ -547,7 +549,7 @@ a {
   .hero-kicker { font-size: .55rem; }
   .hero-footer { grid-template-columns: 1fr auto; gap: .5rem; }
   .hero-footer span:nth-child(2) { display: none; }
-  .hero-prefix { margin-bottom: 0; }
+  .hero-prefix { margin-bottom: 1.5rem; }
   .hero h1 { font-size: clamp(4.2rem, 20vw, 7rem); }
   .hero-last-name { margin-left: 35%; }
   .split-heading { grid-template-columns: 1fr; gap: 1.5rem; }
