@@ -30,8 +30,8 @@ const redirects = {
 };
 for (const [file, section] of Object.entries(redirects)) {
   const url = `/my-academic-site/#${section}`;
-  await writeFile(`dist/${file}`, `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ruihong Xie</title><meta http-equiv="refresh" content="0;url=${url}"><link rel="canonical" href="https://xieruihong.github.io${url}"></head><body><a href="${url}">前往新版学术网站</a></body></html>`);
+  await writeFile(`dist/${file}`, `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ruihong Xie</title><meta http-equiv="refresh" content="0;url=${url}"><link rel="canonical" href="https://xieruihong.github.io${url}"></head><body><a href="${url}">Visit the updated academic website</a></body></html>`);
 }
 await writeFile("dist/.nojekyll", "");
-await writeFile("dist/404.html", '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>页面未找到 · Ruihong Xie</title></head><body><h1>页面未找到</h1><p><a href="/my-academic-site/">回到 Ruihong Xie 的学术主页</a></p></body></html>');
+await writeFile("dist/404.html", '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found · Ruihong Xie</title></head><body><h1>Page not found</h1><p><a href="/my-academic-site/">Return to Ruihong Xie&#39;s academic homepage</a></p></body></html>');
 console.log("Pre-rendered academic profile and preserved legacy page links.");

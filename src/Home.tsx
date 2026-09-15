@@ -6,7 +6,7 @@ import siteContentData from "../content/site-content.json";
 type Publication = {
   id: number;
   year: number;
-  type: "论文" | "审稿中" | "会议" | "专利";
+  type: "Journal article" | "Under review" | "Conference" | "Patent";
   title: string;
   venue: string;
   authors: string;
@@ -27,7 +27,6 @@ type Education = {
 type SiteContent = {
   profile: {
     name: string;
-    chineseName: string;
     title: string;
     affiliation: string;
     location: string;
@@ -53,7 +52,10 @@ type SiteContent = {
 
 type OrcidWorkSummary = {
   "put-code": number;
-  title?: { title?: { value?: string } };
+  title?: {
+    title?: { value?: string };
+    "translated-title"?: { content?: string; "language-code"?: string };
+  };
   "publication-date"?: {
     year?: { value?: string };
     month?: { value?: string };
@@ -105,6 +107,13 @@ const fallbackLiveWorks: LiveWork[] = publications
     venue: paper.venue.split(",")[0],
   }));
 
+// Prefer curated English text when an external record contains a Chinese title.
+// Keep the original record linked; do not invent translations for new outputs.
+function englishFeedText(value: string | undefined, fallback: string) {
+  const text = value?.trim();
+  return text && !/\p{Script=Han}/u.test(text) ? text : fallback;
+}
+
 function readOrcidWorks(data: { group?: Array<{ "work-summary"?: OrcidWorkSummary[] }> }) {
   const summaries = data.group?.flatMap((group) => group["work-summary"] ?? []) ?? [];
   const unique = new Map<string, LiveWork>();
@@ -122,14 +131,17 @@ function readOrcidWorks(data: { group?: Array<{ "work-summary"?: OrcidWorkSummar
     const day = work["publication-date"]?.day?.value?.padStart(2, "0") ?? "01";
     const publicationDate = `${year}-${month}-${day}`;
     const key = doi || title.toLowerCase();
+    const local = doi ? publications.find((paper) => paper.doi?.toLowerCase() === doi) : undefined;
+    const translated = work.title?.["translated-title"];
+    const englishTitle = translated?.["language-code"]?.startsWith("en") ? translated.content : undefined;
 
     if (!unique.has(key)) {
       unique.set(key, {
         id: String(work["put-code"]),
-        title,
+        title: englishFeedText(englishTitle || title, local?.title || `Research output · ORCID record ${work["put-code"]}`),
         publicationDate,
         doi,
-        venue: work["journal-title"]?.value || "ORCID WORKS",
+        venue: englishFeedText(work["journal-title"]?.value, local?.venue.split(",")[0] || "ORCID WORKS"),
       });
     }
   }
@@ -167,7 +179,7 @@ function LiveResearchFeed() {
             return {
               ...work,
               publicationDate: openAlex.publication_date || work.publicationDate,
-              venue: openAlex.primary_location?.source?.display_name || work.venue,
+              venue: englishFeedText(openAlex.primary_location?.source?.display_name, work.venue),
               citedBy: openAlex.cited_by_count,
             };
           } catch {
@@ -180,8 +192,8 @@ function LiveResearchFeed() {
       setWorks(enriched);
       setStatus("live");
       setSyncedAt(
-        new Intl.DateTimeFormat("zh-CN", {
-          month: "2-digit",
+        new Intl.DateTimeFormat("en-GB", {
+          month: "short",
           day: "2-digit",
           hour: "2-digit",
           minute: "2-digit",
@@ -191,7 +203,7 @@ function LiveResearchFeed() {
     } catch {
       setWorks(fallbackLiveWorks);
       setStatus("fallback");
-      setSyncedAt("已显示本地备份");
+      setSyncedAt("Local backup");
     }
   }, []);
 
@@ -208,12 +220,12 @@ function LiveResearchFeed() {
     <div className="live-panel">
       <div className="live-head">
         <div>
-          <p className="eyebrow">LIVE SCHOLARLY PROFILE / 实时学术同步</p>
-          <h3>最新成果与引用动态</h3>
+          <p className="eyebrow">LIVE SCHOLARLY PROFILE</p>
+          <h3>Latest research & citations</h3>
         </div>
         <button className="sync-button" onClick={() => void sync()} disabled={status === "syncing"}>
           <span className={`pulse ${status}`} aria-hidden="true" />
-          {status === "syncing" ? "同步中" : status === "live" ? "在线" : "重新连接"}
+          {status === "syncing" ? "Syncing" : status === "live" ? "Live" : "Reconnect"}
         </button>
       </div>
       <div className="feed-list" aria-live="polite">
@@ -230,7 +242,7 @@ function LiveResearchFeed() {
               </a>
               <span>
                 {work.publicationDate} · {work.venue}
-                {typeof work.citedBy === "number" ? ` · OPENALEX 引用 ${work.citedBy}` : ""}
+                {typeof work.citedBy === "number" ? ` · OpenAlex citations: ${work.citedBy}` : ""}
               </span>
             </div>
             <span className="north-east" aria-hidden="true">↗</span>
@@ -238,8 +250,8 @@ function LiveResearchFeed() {
         ))}
       </div>
       <div className="live-foot">
-        <span>数据源 ORCID + OPENALEX · GOOGLE SCHOLAR 直达</span>
-        <span>上次同步 {syncedAt} · 每 10 分钟自动刷新</span>
+        <span>Sources: ORCID + OpenAlex · <a href={LINKS.scholar} target="_blank" rel="noreferrer">Google Scholar ↗</a></span>
+        <span>Last synced: {syncedAt} · Refreshes every 10 min</span>
       </div>
     </div>
   );
@@ -247,14 +259,14 @@ function LiveResearchFeed() {
 
 function Publications() {
   const [query, setQuery] = useState("");
-  const [type, setType] = useState("全部");
+  const [type, setType] = useState("All");
   const [expanded, setExpanded] = useState<number | null>(19);
   const [copied, setCopied] = useState<number | null>(null);
 
   const visible = useMemo(() => {
     const normalized = query.trim().toLowerCase();
     return publications.filter((paper) => {
-      const matchesType = type === "全部" || paper.type === type;
+      const matchesType = type === "All" || paper.type === type;
       const haystack = [paper.title, paper.venue, paper.authors, ...paper.tags].join(" ").toLowerCase();
       return matchesType && (!normalized || haystack.includes(normalized));
     });
@@ -270,10 +282,10 @@ function Publications() {
     <section id="publications" className="section publications-section">
       <div className="section-heading split-heading">
         <div>
-          <p className="eyebrow">PUBLICATIONS / 学术成果</p>
-          <h2>论文、会议与专利</h2>
+          <p className="eyebrow">PUBLICATIONS</p>
+          <h2>Publications & patents</h2>
         </div>
-        <p>依据最新学术履历整理，可按类型筛选、关键词检索、展开研究简介并复制引用。</p>
+        <p>Explore my research outputs and work in progress.</p>
       </div>
       <div className="publication-tools">
         <label className="search-box">
@@ -281,12 +293,12 @@ function Publications() {
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="搜索标题、期刊、作者或关键词"
-            aria-label="搜索学术成果"
+            placeholder="Search title, journal, author, or keyword"
+            aria-label="Search research outputs"
           />
         </label>
-        <div className="filters" aria-label="按类型筛选">
-          {["全部", "论文", "审稿中", "会议", "专利"].map((item) => (
+        <div className="filters" aria-label="Filter by publication type">
+          {["All", "Journal article", "Under review", "Conference", "Patent"].map((item) => (
             <button
               key={item}
               className={type === item ? "active" : ""}
@@ -328,7 +340,7 @@ function Publications() {
                   </div>
                   <div className="paper-actions">
                     <button onClick={() => void copyCitation(paper)}>
-                      {copied === paper.id ? "引用已复制 ✓" : "复制引用"}
+                      {copied === paper.id ? "Citation copied ✓" : "Copy citation"}
                     </button>
                     {paper.doi && (
                       <a href={`https://doi.org/${paper.doi}`} target="_blank" rel="noreferrer">DOI ↗</a>
@@ -339,7 +351,7 @@ function Publications() {
             </article>
           );
         })}
-        {visible.length === 0 && <p className="empty-state">没有匹配的成果，试试其他关键词。</p>}
+        {visible.length === 0 && <p className="empty-state">No matching results. Try another keyword.</p>}
       </div>
     </section>
   );
@@ -350,10 +362,10 @@ function AcademicPath() {
     <section id="experience" className="section path-section">
       <div className="section-heading split-heading">
         <div>
-          <p className="eyebrow">ACADEMIC PATH / 学术路径</p>
-          <h2>从结构防护到桥梁风振</h2>
+          <p className="eyebrow">ACADEMIC PATH</p>
+          <h2>Education & research experience</h2>
         </div>
-        <p>跨越桥梁工程、冲击动力学与非线性振动控制，并在同济大学与多伦多大学开展联合研究。</p>
+        <p>From bridge engineering and impact dynamics to nonlinear vibration control, with collaborative research at Tongji University and the University of Toronto.</p>
       </div>
       <div className="career-grid">
         <div className="education-list">
@@ -369,7 +381,7 @@ function AcademicPath() {
           ))}
         </div>
         <div className="project-column">
-          <p className="eyebrow">FUNDED RESEARCH / 科研项目</p>
+          <p className="eyebrow">FUNDED RESEARCH</p>
           <div className="project-list">
             {projects.map((project) => (
               <article key={project.title}>
@@ -382,7 +394,7 @@ function AcademicPath() {
         </div>
       </div>
       <div id="awards" className="awards-block">
-        <p className="eyebrow">SELECTED HONOURS / 代表荣誉</p>
+        <p className="eyebrow">SELECTED HONOURS</p>
         <div className="awards-grid">
           {awards.map((award) => (
             <article key={`${award.year}-${award.title}`}>
@@ -416,29 +428,29 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a href="#top" className="wordmark" onClick={closeMenu} aria-label="回到首页">
+        <a href="#top" className="wordmark" onClick={closeMenu} aria-label="Back to home">
           RX<span>·</span>
         </a>
-        <nav className={menuOpen ? "open" : ""} aria-label="主导航">
-          <a href="#about" onClick={closeMenu}>关于</a>
-          <a href="#research" onClick={closeMenu}>研究</a>
-          <a href="#publications" onClick={closeMenu}>成果</a>
-          <a href="#experience" onClick={closeMenu}>经历</a>
-          <a href="#awards" onClick={closeMenu}>荣誉</a>
-          <a href="#contact" onClick={closeMenu}>联系</a>
+        <nav className={menuOpen ? "open" : ""} aria-label="Main navigation">
+          <a href="#about" onClick={closeMenu}>About</a>
+          <a href="#research" onClick={closeMenu}>Research</a>
+          <a href="#publications" onClick={closeMenu}>Publications</a>
+          <a href="#experience" onClick={closeMenu}>Experience</a>
+          <a href="#awards" onClick={closeMenu}>Honours</a>
+          <a href="#contact" onClick={closeMenu}>Contact</a>
         </nav>
         <div className="header-actions">
           <button
             className="theme-toggle"
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            aria-label={theme === "light" ? "切换到深色模式" : "切换到浅色模式"}
+            aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
           >
             {theme === "light" ? "◐" : "◑"}
           </button>
           <button
             className="menu-toggle"
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="打开或关闭导航"
+            aria-label="Toggle navigation"
             aria-expanded={menuOpen}
           >
             <span />
@@ -454,13 +466,13 @@ export default function Home() {
         </div>
         <div className="hero-grid">
           <div className="hero-title-wrap">
-            <p className="hero-prefix">{PROFILE.chineseName}</p>
+            <p className="hero-prefix">Academic profile</p>
             <h1><span>RUIHONG</span><span className="hero-last-name">XIE</span></h1>
           </div>
           <div className="hero-intro">
             <p className="role">{PROFILE.title}</p>
             <p className="hero-statement">{PROFILE.statement}</p>
-            <a href="#research" className="text-link">进入研究现场 <span>↓</span></a>
+            <a href="#research" className="text-link">Explore my research <span>↓</span></a>
           </div>
         </div>
         <div className="hero-footer">
@@ -472,16 +484,16 @@ export default function Home() {
 
       <section id="about" className="section about-section">
         <div className="about-label">
-          <p className="eyebrow">ABOUT / 关于</p>
+          <p className="eyebrow">ABOUT</p>
           <span className="large-index">01</span>
         </div>
         <div className="about-copy">
           <p className="lead-copy">
-            我的研究连接<span>桥梁风工程、非线性动力学与结构韧性</span>，让大跨桥梁在风与振动中保持安全、稳定与高效。
+            My research connects <span>bridge wind engineering, nonlinear dynamics, and structural resilience</span> to keep long-span bridges safe, stable, and efficient.
           </p>
           <div className="about-columns">
-            <p>目前在同济大学攻读博士学位，并于多伦多大学开展联合培养研究。工作聚焦非线性能量阱惯容器在桥梁涡激振动、抖振与颤振控制中的理论、设计与试验验证。</p>
-            <p>此前在湖南大学研究桥梁冲击动力与复合防护结构。现在进一步探索减振与振动能量收集的协同机制，把结构安全、装置效率和工程可实施性放进同一套设计框架。</p>
+            <p>I am a PhD researcher at Tongji University and a visiting PhD researcher at the University of Toronto. My work focuses on the theory, design, and experimental validation of nonlinear energy sink inerters for controlling vortex-induced vibrations, buffeting, and flutter in bridges.</p>
+            <p>Previously, I studied bridge impact dynamics and composite protective structures at Hunan University. I now explore coordinated vibration control and energy harvesting, bringing structural safety, device efficiency, and practical implementation into a common design framework.</p>
           </div>
           <div className="profile-links">
             <a href={LINKS.scholar} target="_blank" rel="noreferrer">Google Scholar ↗</a>
@@ -495,10 +507,10 @@ export default function Home() {
       <section id="research" className="section research-section">
         <div className="section-heading split-heading">
           <div>
-            <p className="eyebrow">RESEARCH AGENDA / 研究方向</p>
-            <h2>四条互相连接的研究主线</h2>
+            <p className="eyebrow">RESEARCH AGENDA</p>
+            <h2>Research interests</h2>
           </div>
-          <p>从风致响应机理到控制装置，从实时混合试验到工程防护，围绕“更安全、更轻量、更可持续”的结构控制持续推进。</p>
+          <p>From wind-induced response mechanisms and control devices to real-time hybrid testing and structural protection, I work towards safer, lighter, and more sustainable structures.</p>
         </div>
         <div className="focus-grid">
           {focusAreas.map((area) => (
@@ -508,10 +520,9 @@ export default function Home() {
                 <span className="focus-mark" aria-hidden="true" />
               </div>
               <h3>{area.title}</h3>
-              <p className="focus-en">{area.en}</p>
               <p className="focus-text">{area.text}</p>
               <button onClick={() => document.querySelector("#publications")?.scrollIntoView({ behavior: "smooth" })}>
-                查看相关成果 <span>↗</span>
+                View publications <span>↗</span>
               </button>
             </article>
           ))}
@@ -525,8 +536,8 @@ export default function Home() {
       <section id="news" className="section updates-section">
         <div className="section-heading split-heading">
           <div>
-            <p className="eyebrow">NEWS & MILESTONES / 近期动态</p>
-            <h2>研究进展</h2>
+            <p className="eyebrow">NEWS & MILESTONES</p>
+            <h2>Research updates</h2>
           </div>
           <span className="issue-number">PROFILE UPDATED · 2026</span>
         </div>
@@ -544,10 +555,10 @@ export default function Home() {
 
       <footer id="contact" className="site-footer">
         <div className="footer-top">
-          <p className="eyebrow">RESEARCH COLLABORATION / 学术合作</p>
-          <h2>一起解决桥梁在风与振动中的<em>关键问题。</em></h2>
+          <p className="eyebrow">RESEARCH COLLABORATION</p>
+          <h2>Let's tackle the challenges of <em>wind & vibration.</em></h2>
           <button className="email-button" onClick={() => void copyEmail()}>
-            {emailCopied ? "邮箱已复制 ✓" : "复制邮箱"}<span>↗</span>
+            {emailCopied ? "Email copied ✓" : "Copy email"}<span>↗</span>
           </button>
         </div>
         <div className="contact-lines">
