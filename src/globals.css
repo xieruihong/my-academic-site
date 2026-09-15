@@ -270,10 +270,6 @@ a {
 }
 
 .about-label { display: flex; flex-direction: column; justify-content: space-between; }
-.large-index {
-  font: italic 400 6rem/1 Georgia, serif;
-  color: var(--blue);
-}
 
 .lead-copy {
   max-width: 63rem;
@@ -557,7 +553,6 @@ a {
   .about-columns { grid-template-columns: 1fr; gap: 1rem; }
   .profile-links { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .lead-copy { margin-bottom: 3rem; }
-  .large-index { font-size: 4rem; }
   .live-panel { padding: 1.2rem; }
   .live-head { flex-direction: column; }
   .feed-item { grid-template-columns: 2rem 1fr auto; }
