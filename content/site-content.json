@@ -377,8 +377,9 @@
     }
   ],
   "updates": [
-    { "date": "04.29", "year": "2026", "text": "Research on improving the buffeting and flutter performance of long-span bridges using nonlinear energy sink inerters published in JWEIA.", "kind": "PUBLICATION" },
-    { "date": "03.01", "year": "2026", "text": "Research on real-time hybrid testing of bridge vortex-induced vibration control published in Engineering Structures.", "kind": "PUBLICATION" },
+    { "date": "08.20", "year": "2026", "text": "Graduated with a PhD in Civil Engineering from Tongji University, following visiting doctoral research at the University of Toronto.", "kind": "MILESTONE", "href": "#experience" },
+    { "date": "04.29", "year": "2026", "text": "Research on improving the buffeting and flutter performance of long-span bridges using nonlinear energy sink inerters published in JWEIA.", "kind": "PUBLICATION", "href": "#paper-1" },
+    { "date": "03.01", "year": "2026", "text": "Research on real-time hybrid testing of bridge vortex-induced vibration control published in Engineering Structures.", "kind": "PUBLICATION", "href": "#paper-2" },
     { "date": "07.01", "year": "2025", "text": "First Prize for Outstanding Paper at the 8th National Wind Engineering Graduate Forum.", "kind": "AWARD" },
     { "date": "11.01", "year": "2024", "text": "Awarded National Natural Science Foundation of China funding for coordinated wind-vibration control and energy harvesting.", "kind": "GRANT" }
   ],
