@@ -7,14 +7,19 @@ import react from "@vitejs/plugin-react";
 const server = await createServer({
   configFile: false,
   plugins: [react()],
-  server: { middlewareMode: true, watch: null, hmr: false },
+  server: { middlewareMode: true, watch: null, hmr: false, ws: false },
   appType: "custom",
 });
 try {
-  const { render } = await server.ssrLoadModule("/src/entry-server.tsx");
+  const { render, renderCv } = await server.ssrLoadModule("/src/entry-server.tsx");
   const template = await readFile("dist/index.html", "utf8");
   if (!template.includes("<!--app-html-->")) throw new Error("Missing prerender placeholder");
   await writeFile("dist/index.html", template.replace("<!--app-html-->", () => render()));
+  const cvTemplate = template
+    .replace(/<title>.*?<\/title>/, "<title>Curriculum Vitae · Ruihong Xie</title>")
+    .replace(/<meta (?:name="(?:description|twitter:[^"]+)"|property="og:[^"]+")[^>]*>/g, "")
+    .replace('rel="canonical" href="https://xieruihong.github.io/my-academic-site/"', 'rel="canonical" href="https://xieruihong.github.io/my-academic-site/cv.html"');
+  await writeFile("dist/cv.html", cvTemplate.replace("<!--app-html-->", () => renderCv()));
 } finally {
   await server.close();
 }

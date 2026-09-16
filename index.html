@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      try {
+        var savedTheme = localStorage.getItem('rx-theme');
+        document.documentElement.dataset.theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      } catch (_) {}
+    </script>
     <title>Ruihong Xie | Bridge Wind Engineering &amp; Vibration Control</title>
     <meta name="description" content="Ruihong Xie's academic website: bridge wind engineering, nonlinear vibration control, energy harvesting, publications, and live research updates." />
     <link rel="canonical" href="https://xieruihong.github.io/my-academic-site/" />

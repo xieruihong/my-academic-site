@@ -6,6 +6,16 @@ https://xieruihong.github.io/my-academic-site/
 
 ## 日后在哪里更新
 
+### 2026-09-16 学术展示与交互优化
+
+此版本已由网站所有者在本地预览后确认发布。日后修改时，仍可先启动 `pnpm dev --port 4173 --strictPort` 查看本地版本，地址为 `http://127.0.0.1:4173/my-academic-site/`。本地保存不会自动影响公开网站；推送到 `master` 后才会触发发布。
+
+新增代表作区、研究主题及年份筛选、单篇锚点分享、BibTeX 下载、可展开完整列表、主题记忆、导航当前位置、复制失败回退和英文 CV 打印页。排版补充在 `src/refinements.css`，论文交互在 `src/PublicationLibrary.tsx`，筛选/导出规则在 `src/research.ts`。
+
+`cv.html` 从本站已公开资料生成（`src/Cv.tsx`），点击 `Print / Save as PDF` 使用浏览器打印功能；不是对原始私人 CV PDF 的直接公开。没有新增未经确认的照片、实验图、全文 PDF 或任职信息。
+
+研究主题根据已有标题与关键词匹配；新增研究方向或修改主题分类时，需同步维护 `src/research.ts`。引用导出保留原始资料，会议及专利使用通用 BibTeX 条目，不猜测未提供的页码或会议出版类型。
+
 个人资料、论文、会议、专利、教育经历、项目、荣誉和动态集中在 `content/site-content.json`。
 
 发布完成后，可在 GitHub 的 `master` 分支打开该文件，点击铅笔按钮修改，再点击 **Commit changes** 保存。网站会自动重新发布；Actions 中的发布任务成功后，刷新公开页面即可看到修改。

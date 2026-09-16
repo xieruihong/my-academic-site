@@ -1,22 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import siteContentData from "../content/site-content.json";
 import VisitorStats from "./VisitorStats";
-
-type Publication = {
-  id: number;
-  year: number;
-  type: "Journal article" | "Under review" | "Conference" | "Patent";
-  title: string;
-  venue: string;
-  authors: string;
-  abstract: string;
-  tags: string[];
-  citation: string;
-  doi?: string;
-  featured?: boolean;
-};
+import PublicationLibrary, { SelectedPublications } from "./PublicationLibrary";
+import { scrollToId, topics, type Publication } from "./research";
 
 type Education = {
   period: string;
@@ -44,7 +32,7 @@ type SiteContent = {
     bilibili: string;
   };
   publications: Publication[];
-  updates: Array<{ date: string; year: string; text: string; kind: string }>;
+  updates: Array<{ date: string; year: string; text: string; kind: string; href?: string }>;
   focusAreas: Array<{ index: string; title: string; en: string; text: string }>;
   education: Education[];
   projects: Array<{ period: string; title: string; meta: string }>;
@@ -128,9 +116,9 @@ function readOrcidWorks(data: { group?: Array<{ "work-summary"?: OrcidWorkSummar
       ?.find((item) => item["external-id-type"]?.toLowerCase() === "doi")
       ?.["external-id-value"]
       ?.toLowerCase();
-    const month = work["publication-date"]?.month?.value?.padStart(2, "0") ?? "01";
-    const day = work["publication-date"]?.day?.value?.padStart(2, "0") ?? "01";
-    const publicationDate = `${year}-${month}-${day}`;
+    const month = work["publication-date"]?.month?.value?.padStart(2, "0");
+    const day = month ? work["publication-date"]?.day?.value?.padStart(2, "0") : undefined;
+    const publicationDate = [year, month, day].filter(Boolean).join("-");
     const key = doi || title.toLowerCase();
     const local = doi ? publications.find((paper) => paper.doi?.toLowerCase() === doi) : undefined;
     const translated = work.title?.["translated-title"];
@@ -154,15 +142,23 @@ function readOrcidWorks(data: { group?: Array<{ "work-summary"?: OrcidWorkSummar
 
 function LiveResearchFeed() {
   const [works, setWorks] = useState<LiveWork[]>(fallbackLiveWorks);
-  const [status, setStatus] = useState<"syncing" | "live" | "fallback">("syncing");
+  const [status, setStatus] = useState<"syncing" | "live" | "fallback" | "stale">("syncing");
   const [syncedAt, setSyncedAt] = useState<string>("—");
+  const hasSynced = useRef(false);
+  const pending = useRef<AbortController | null>(null);
+  const mounted = useRef(false);
 
   const sync = useCallback(async () => {
+    if (pending.current) return;
+    const controller = new AbortController();
+    pending.current = controller;
+    const timeout = window.setTimeout(() => controller.abort(), 15000);
     setStatus("syncing");
     try {
       const response = await fetch("https://pub.orcid.org/v3.0/0000-0002-5086-0768/works", {
         headers: { Accept: "application/json" },
         cache: "no-store",
+        signal: controller.signal,
       });
       if (!response.ok) throw new Error("ORCID feed unavailable");
 
@@ -173,7 +169,7 @@ function LiveResearchFeed() {
           try {
             const openAlexResponse = await fetch(
               `https://api.openalex.org/works/https://doi.org/${encodeURIComponent(work.doi)}`,
-              { cache: "no-store" },
+              { cache: "no-store", signal: controller.signal },
             );
             if (!openAlexResponse.ok) return work;
             const openAlex = (await openAlexResponse.json()) as OpenAlexWork;
@@ -190,8 +186,10 @@ function LiveResearchFeed() {
       );
 
       if (!enriched.length) throw new Error("No public works found");
+      if (!mounted.current) return;
       setWorks(enriched);
       setStatus("live");
+      hasSynced.current = true;
       setSyncedAt(
         new Intl.DateTimeFormat("en-GB", {
           month: "short",
@@ -202,16 +200,20 @@ function LiveResearchFeed() {
         }).format(new Date()),
       );
     } catch {
-      setWorks(fallbackLiveWorks);
-      setStatus("fallback");
-      setSyncedAt("Local backup");
+      if (mounted.current) setStatus(hasSynced.current ? "stale" : "fallback");
+    } finally {
+      window.clearTimeout(timeout);
+      pending.current = null;
     }
   }, []);
 
   useEffect(() => {
+    mounted.current = true;
     const initialSync = window.setTimeout(() => void sync(), 0);
-    const timer = window.setInterval(() => void sync(), 10 * 60 * 1000);
+    const timer = window.setInterval(() => { if (!document.hidden) void sync(); }, 10 * 60 * 1000);
     return () => {
+      mounted.current = false;
+      pending.current?.abort();
       window.clearTimeout(initialSync);
       window.clearInterval(timer);
     };
@@ -221,12 +223,12 @@ function LiveResearchFeed() {
     <div className="live-panel">
       <div className="live-head">
         <div>
-          <p className="eyebrow">LIVE SCHOLARLY PROFILE</p>
+          <p className="eyebrow">CONNECTED SCHOLARLY PROFILE</p>
           <h3>Latest research & citations</h3>
         </div>
         <button className="sync-button" onClick={() => void sync()} disabled={status === "syncing"}>
           <span className={`pulse ${status}`} aria-hidden="true" />
-          {status === "syncing" ? "Syncing" : status === "live" ? "Live" : "Reconnect"}
+          {status === "syncing" ? "Refreshing…" : "Refresh"}
         </button>
       </div>
       <div className="feed-list" aria-live="polite">
@@ -252,109 +254,10 @@ function LiveResearchFeed() {
       </div>
       <div className="live-foot">
         <span>Sources: ORCID + OpenAlex · <a href={LINKS.scholar} target="_blank" rel="noreferrer">Google Scholar ↗</a></span>
-        <span>Last synced: {syncedAt} · Refreshes every 10 min</span>
+        <span role="status">{status === "fallback" ? "Service unavailable · Showing curated records" : status === "stale" ? `Refresh unavailable · Last successful sync: ${syncedAt}` : hasSynced.current ? `Last successful sync: ${syncedAt}` : "Connecting to public research records…"}</span>
       </div>
+      <p className="feed-note">Checks every 10 minutes while this page is open and visible. Publication status, news, and the full research library are maintained separately.</p>
     </div>
-  );
-}
-
-function Publications() {
-  const [query, setQuery] = useState("");
-  const [type, setType] = useState("All");
-  const [expanded, setExpanded] = useState<number | null>(19);
-  const [copied, setCopied] = useState<number | null>(null);
-
-  const visible = useMemo(() => {
-    const normalized = query.trim().toLowerCase();
-    return publications.filter((paper) => {
-      const matchesType = type === "All" || paper.type === type;
-      const haystack = [paper.title, paper.venue, paper.authors, ...paper.tags].join(" ").toLowerCase();
-      return matchesType && (!normalized || haystack.includes(normalized));
-    });
-  }, [query, type]);
-
-  const copyCitation = async (paper: Publication) => {
-    await navigator.clipboard.writeText(paper.citation);
-    setCopied(paper.id);
-    window.setTimeout(() => setCopied(null), 1800);
-  };
-
-  return (
-    <section id="publications" className="section publications-section">
-      <div className="section-heading split-heading">
-        <div>
-          <p className="eyebrow">PUBLICATIONS</p>
-          <h2>Publications & patents</h2>
-        </div>
-        <p>Explore my research outputs and work in progress.</p>
-      </div>
-      <div className="publication-tools">
-        <label className="search-box">
-          <span aria-hidden="true">⌕</span>
-          <input
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search title, journal, author, or keyword"
-            aria-label="Search research outputs"
-          />
-        </label>
-        <div className="filters" aria-label="Filter by publication type">
-          {["All", "Journal article", "Under review", "Conference", "Patent"].map((item) => (
-            <button
-              key={item}
-              className={type === item ? "active" : ""}
-              onClick={() => setType(item)}
-              aria-pressed={type === item}
-            >
-              {item}
-            </button>
-          ))}
-        </div>
-      </div>
-      <div className="publication-list">
-        {visible.map((paper) => {
-          const isOpen = expanded === paper.id;
-          return (
-            <article className={`publication ${isOpen ? "open" : ""}`} key={paper.id}>
-              <button
-                className="publication-summary"
-                onClick={() => setExpanded(isOpen ? null : paper.id)}
-                aria-expanded={isOpen}
-              >
-                <span className="publication-year">{paper.year}</span>
-                <div className="publication-main">
-                  <div className="publication-meta">
-                    <span>{paper.type}</span>
-                    {paper.featured && <span className="featured">FEATURED</span>}
-                  </div>
-                  <h3>{paper.title}</h3>
-                  <p>{paper.authors}</p>
-                  <p className="venue">{paper.venue}</p>
-                </div>
-                <span className="expand-icon" aria-hidden="true">{isOpen ? "−" : "+"}</span>
-              </button>
-              {isOpen && (
-                <div className="publication-detail">
-                  <p>{paper.abstract}</p>
-                  <div className="tags">
-                    {paper.tags.map((tag) => <span key={tag}>{tag}</span>)}
-                  </div>
-                  <div className="paper-actions">
-                    <button onClick={() => void copyCitation(paper)}>
-                      {copied === paper.id ? "Citation copied ✓" : "Copy citation"}
-                    </button>
-                    {paper.doi && (
-                      <a href={`https://doi.org/${paper.doi}`} target="_blank" rel="noreferrer">DOI ↗</a>
-                    )}
-                  </div>
-                </div>
-              )}
-            </article>
-          );
-        })}
-        {visible.length === 0 && <p className="empty-state">No matching results. Try another keyword.</p>}
-      </div>
-    </section>
   );
 }
 
@@ -397,13 +300,14 @@ function AcademicPath() {
       <div id="awards" className="awards-block">
         <p className="eyebrow">SELECTED HONOURS</p>
         <div className="awards-grid">
-          {awards.map((award) => (
+          {awards.slice(0, 6).map((award) => (
             <article key={`${award.year}-${award.title}`}>
               <span>{award.year}</span>
               <p>{award.title}</p>
             </article>
           ))}
         </div>
+        <details className="more-honours"><summary>View earlier honours</summary><div className="awards-grid">{awards.slice(6).map(award => <article key={`${award.year}-${award.title}`}><span>{award.year}</span><p>{award.title}</p></article>)}</div></details>
       </div>
     </section>
   );
@@ -413,46 +317,98 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [emailCopied, setEmailCopied] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [activeSection, setActiveSection] = useState("top");
+  const [topicRequest, setTopicRequest] = useState({ topic: "All", key: 0 });
+  const headerRef = useRef<HTMLElement>(null);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const emailTimer = useRef<number | undefined>(undefined);
 
   useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-  }, [theme]);
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const applyPreference = () => {
+      let saved: string | null = null;
+      try { saved = localStorage.getItem("rx-theme"); } catch { /* Storage may be disabled. */ }
+      const preferred = saved === "light" || saved === "dark" ? saved : media.matches ? "dark" : "light";
+      setTheme(preferred);
+      document.documentElement.dataset.theme = preferred;
+    };
+    applyPreference();
+    media.addEventListener("change", applyPreference);
+    return () => { media.removeEventListener("change", applyPreference); window.clearTimeout(emailTimer.current); };
+  }, []);
+
+  useEffect(() => {
+    let frame = 0;
+    const updateSection = () => {
+      frame = 0;
+      const ids = ["top", "selected", "about", "research", "publications", "experience", "news", "contact"];
+      let current = "top";
+      for (const id of ids) { if ((document.getElementById(id)?.getBoundingClientRect().top ?? Infinity) <= 150) current = id; }
+      setActiveSection(current === "selected" ? "publications" : current);
+    };
+    const onScroll = () => { if (!frame) frame = window.requestAnimationFrame(updateSection); };
+    updateSection();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onScroll); window.cancelAnimationFrame(frame); };
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const escape = (event: KeyboardEvent) => { if (event.key === "Escape") { setMenuOpen(false); menuButton.current?.focus(); } };
+    const outside = (event: PointerEvent) => { if (!headerRef.current?.contains(event.target as Node)) setMenuOpen(false); };
+    const focusOutside = (event: FocusEvent) => { if (!headerRef.current?.contains(event.target as Node)) setMenuOpen(false); };
+    document.addEventListener("keydown", escape);
+    document.addEventListener("pointerdown", outside);
+    document.addEventListener("focusin", focusOutside);
+    return () => { document.removeEventListener("keydown", escape); document.removeEventListener("pointerdown", outside); document.removeEventListener("focusin", focusOutside); };
+  }, [menuOpen]);
+
+  const toggleTheme = () => {
+    const next = theme === "light" ? "dark" : "light";
+    setTheme(next);
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem("rx-theme", next); } catch { /* Theme still works without persistence. */ }
+  };
 
   const copyEmail = async () => {
-    await navigator.clipboard.writeText(PROFILE.email);
-    setEmailCopied(true);
-    window.setTimeout(() => setEmailCopied(false), 1800);
+    try {
+      await navigator.clipboard.writeText(PROFILE.email);
+      setEmailCopied(true);
+      setEmailError(false);
+      window.clearTimeout(emailTimer.current);
+      emailTimer.current = window.setTimeout(() => setEmailCopied(false), 2500);
+    } catch { setEmailError(true); }
   };
 
   const closeMenu = () => setMenuOpen(false);
 
   return (
     <main>
-      <header className="site-header">
+      <a href="#about" className="skip-link">Skip to content</a>
+      <header className="site-header" ref={headerRef}>
         <a href="#top" className="wordmark" onClick={closeMenu} aria-label="Back to home">
           RX<span>·</span>
         </a>
-        <nav className={menuOpen ? "open" : ""} aria-label="Main navigation">
-          <a href="#about" onClick={closeMenu}>About</a>
-          <a href="#research" onClick={closeMenu}>Research</a>
-          <a href="#publications" onClick={closeMenu}>Publications</a>
-          <a href="#experience" onClick={closeMenu}>Experience</a>
-          <a href="#awards" onClick={closeMenu}>Honours</a>
-          <a href="#contact" onClick={closeMenu}>Contact</a>
+        <nav id="main-navigation" className={menuOpen ? "open" : ""} aria-label="Main navigation">
+          {[["about", "About"], ["research", "Research"], ["publications", "Publications"], ["experience", "Experience"], ["news", "News"], ["contact", "Contact"]].map(([id, label]) => <a key={id} href={`#${id}`} onClick={closeMenu} aria-current={activeSection === id ? "location" : undefined}>{label}</a>)}
         </nav>
         <div className="header-actions">
           <button
             className="theme-toggle"
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            onClick={toggleTheme}
             aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
           >
             {theme === "light" ? "◐" : "◑"}
           </button>
           <button
             className="menu-toggle"
+            ref={menuButton}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle navigation"
             aria-expanded={menuOpen}
+            aria-controls="main-navigation"
           >
             <span />
             <span />
@@ -473,7 +429,7 @@ export default function Home() {
           <div className="hero-intro">
             <p className="role">{PROFILE.title}</p>
             <p className="hero-statement">{PROFILE.statement}</p>
-            <a href="#research" className="text-link">Explore my research <span>↓</span></a>
+            <div className="hero-actions"><a href="#selected" className="primary-link">Selected publications <span aria-hidden="true">↓</span></a><a href="./cv.html" className="secondary-link">View CV <span aria-hidden="true">↗</span></a><a href={`mailto:${PROFILE.email}`} className="secondary-link">Contact <span aria-hidden="true">↗</span></a></div>
           </div>
         </div>
         <div className="hero-footer">
@@ -482,6 +438,8 @@ export default function Home() {
           <span>STRUCTURES · WIND · CONTROL</span>
         </div>
       </section>
+
+      <SelectedPublications />
 
       <section id="about" className="section about-section">
         <div className="about-label">
@@ -513,7 +471,7 @@ export default function Home() {
           <p>From wind-induced response mechanisms and control devices to real-time hybrid testing and structural protection, I work towards safer, lighter, and more sustainable structures.</p>
         </div>
         <div className="focus-grid">
-          {focusAreas.map((area) => (
+          {focusAreas.map((area, index) => (
             <article className="focus-card" key={area.index}>
               <div className="focus-top">
                 <span>{area.index}</span>
@@ -521,8 +479,8 @@ export default function Home() {
               </div>
               <h3>{area.title}</h3>
               <p className="focus-text">{area.text}</p>
-              <button onClick={() => document.querySelector("#publications")?.scrollIntoView({ behavior: "smooth" })}>
-                View publications <span>↗</span>
+              <button aria-label={`View publications about ${area.title}`} onClick={() => { setTopicRequest(current => ({ topic: topics[index].id, key: current.key + 1 })); window.history.replaceState(null, "", "#publications"); scrollToId("publications"); }}>
+                View related work <span aria-hidden="true">↓</span>
               </button>
             </article>
           ))}
@@ -530,7 +488,7 @@ export default function Home() {
         <LiveResearchFeed />
       </section>
 
-      <Publications />
+      <PublicationLibrary request={topicRequest} />
       <AcademicPath />
 
       <section id="news" className="section updates-section">
@@ -546,8 +504,7 @@ export default function Home() {
             <article key={`${update.year}-${update.date}-${update.kind}`}>
               <time><strong>{update.date}</strong><span>{update.year}</span></time>
               <span className="update-kind">{update.kind}</span>
-              <p>{update.text}</p>
-              <span aria-hidden="true">↗</span>
+              <p>{update.href ? <a href={update.href}>{update.text} <span aria-hidden="true">→</span></a> : update.text}</p>
             </article>
           ))}
         </div>
@@ -560,6 +517,7 @@ export default function Home() {
           <button className="email-button" onClick={() => void copyEmail()}>
             {emailCopied ? "Email copied ✓" : "Copy email"}<span>↗</span>
           </button>
+          <p role="status" className="email-feedback">{emailError ? `Copy unavailable. Select the email address below, or use its email link.` : emailCopied ? "Email address copied." : ""}</p>
         </div>
         <div className="contact-lines">
           <a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a>
