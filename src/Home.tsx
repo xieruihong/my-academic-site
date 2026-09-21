@@ -343,7 +343,7 @@ export default function Home() {
     let frame = 0;
     const updateSection = () => {
       frame = 0;
-      const ids = ["top", "selected", "about", "research", "publications", "experience", "news", "contact"];
+      const ids = ["top", "about", "research", "selected", "publications", "experience", "news", "contact"];
       let current = "top";
       for (const id of ids) { if ((document.getElementById(id)?.getBoundingClientRect().top ?? Infinity) <= 150) current = id; }
       setActiveSection(current === "selected" ? "publications" : current);
@@ -440,8 +440,6 @@ export default function Home() {
         </div>
       </section>
 
-      <SelectedPublications />
-
       <section id="about" className="section about-section">
         <div className="about-label">
           <p className="eyebrow">ABOUT</p>
@@ -490,6 +488,7 @@ export default function Home() {
         <LiveResearchFeed />
       </section>
 
+      <SelectedPublications />
       <PublicationLibrary request={topicRequest} />
       <AcademicPath />
 
