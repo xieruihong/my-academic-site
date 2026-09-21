@@ -39,8 +39,8 @@ a, button, input, select, textarea, summary { -webkit-tap-highlight-color: color
 .split-heading > p { font-size: 1rem; line-height: 1.7; }
 .text-link { font-size: .875rem; line-height: 1.6; }
 .split-heading > .text-link { justify-self: end; align-self: end; }
-.selected-section { padding-block: clamp(1.5rem, 3vw, 3rem); border-bottom: 0; }
-.selected-panel { min-width: 0; padding: 1.75rem; background: var(--card); border: 1px solid var(--line); }
+.selected-section { padding-block: clamp(1.5rem, 3vw, 3rem); background: var(--card); border-bottom: 0; }
+.selected-panel { min-width: 0; padding: 1.75rem; background: var(--paper); border: 1px solid var(--line); }
 .selected-panel .section-heading { margin-bottom: 1.5rem; }
 .selected-panel .section-heading h2 { font-size: clamp(1.6rem, 2.8vw, 2.5rem); line-height: 1.2; }
 .selected-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
