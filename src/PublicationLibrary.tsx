@@ -14,20 +14,22 @@ export function AuthorNames({ authors }: { authors: string }) {
 export function SelectedPublications() {
   return (
     <section id="selected" className="section selected-section">
-      <div className="section-heading split-heading">
-        <div><p className="eyebrow">SELECTED PUBLICATIONS</p><h2>Research in focus.</h2></div>
-        <a className="text-link" href="#publications">Browse all research outputs <span aria-hidden="true">↓</span></a>
-      </div>
-      <div className="selected-grid">
-        {papers.filter(paper => paper.featured && paper.type === "Journal article").slice(0, 3).map(paper => (
-          <article className="selected-paper" key={paper.id}>
-            <div className="selected-meta"><span>{paper.year} · JOURNAL ARTICLE</span><span aria-hidden="true">↗</span></div>
-            <p className="selected-venue">{paper.venue.split(",")[0]}</p>
-            <h3><a href={`#paper-${paper.id}`}>{paper.title}</a></h3>
-            <p className="selected-contribution">{paper.abstract}</p>
-            <div className="selected-bottom"><a href={`#paper-${paper.id}`}>Details & citation <span aria-hidden="true">→</span></a><a href={`https://doi.org/${paper.doi}`} target="_blank" rel="noreferrer" aria-label={`Open DOI for ${paper.title}`}>DOI ↗</a></div>
-          </article>
-        ))}
+      <div className="selected-panel">
+        <div className="section-heading split-heading">
+          <div><p className="eyebrow">SELECTED PUBLICATIONS</p><h2>Research in focus.</h2></div>
+          <a className="text-link" href="#publications">Browse all research outputs <span aria-hidden="true">↓</span></a>
+        </div>
+        <div className="selected-grid">
+          {papers.filter(paper => paper.featured && paper.type === "Journal article").slice(0, 3).map(paper => (
+            <article className="selected-paper" key={paper.id}>
+              <div className="selected-meta"><span>{paper.year} · JOURNAL ARTICLE</span><span aria-hidden="true">↗</span></div>
+              <p className="selected-venue">{paper.venue.split(",")[0]}</p>
+              <h3><a href={`#paper-${paper.id}`}>{paper.title}</a></h3>
+              <p className="selected-contribution">{paper.abstract}</p>
+              <div className="selected-bottom"><a href={`#paper-${paper.id}`}>Details & citation <span aria-hidden="true">→</span></a><a href={`https://doi.org/${paper.doi}`} target="_blank" rel="noreferrer" aria-label={`Open DOI for ${paper.title}`}>DOI ↗</a></div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

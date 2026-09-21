@@ -22,6 +22,10 @@ test("featured research follows the live feed and precedes the full library", as
   const selected = html.indexOf('<section id="selected"');
   assert.ok(liveFeed >= 0 && liveFeed < selected);
   assert.ok(html.indexOf("Research in focus.") > selected);
+  const selectedSection = html.slice(selected, html.indexOf("</section>", selected));
+  assert.ok(selectedSection.startsWith('<section id="selected" class="section selected-section"><div class="selected-panel">'));
+  assert.equal((selectedSection.match(/class="selected-panel"/g) || []).length, 1);
+  assert.equal((selectedSection.match(/class="selected-paper"/g) || []).length, 3, "One inset panel contains all featured papers");
   assert.equal((html.match(/class="selected-paper"/g) || []).length, 3);
   assert.ok(html.includes('href="#selected"'), "Hero still links to featured research");
   assert.ok(html.includes('href="#publications"'), "Full-library links remain valid");

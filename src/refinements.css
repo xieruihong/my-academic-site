@@ -39,8 +39,11 @@ a, button, input, select, textarea, summary { -webkit-tap-highlight-color: color
 .split-heading > p { font-size: 1rem; line-height: 1.7; }
 .text-link { font-size: .875rem; line-height: 1.6; }
 .split-heading > .text-link { justify-self: end; align-self: end; }
-.selected-section { background: color-mix(in srgb, var(--card) 55%, var(--paper)); }
-.selected-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid var(--blue); }
+.selected-section { padding-block: clamp(1.5rem, 3vw, 3rem); border-bottom: 0; }
+.selected-panel { min-width: 0; padding: 1.75rem; background: var(--card); border: 1px solid var(--line); }
+.selected-panel .section-heading { margin-bottom: 1.5rem; }
+.selected-panel .section-heading h2 { font-size: clamp(1.6rem, 2.8vw, 2.5rem); line-height: 1.2; }
+.selected-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
 .selected-paper { display: flex; flex-direction: column; min-width: 0; padding: 1.5rem 1.6rem 0; border-right: 1px solid var(--line); }
 .selected-paper:first-child { padding-left: 0; }
 .selected-paper:last-child { padding-right: 0; border-right: 0; }
@@ -210,6 +213,7 @@ a, button, input, select, textarea, summary { -webkit-tap-highlight-color: color
   .section-heading { margin-bottom: 1.75rem; }
   .split-heading { grid-template-columns: 1fr; gap: 1.2rem; }
   .split-heading > .text-link { justify-self: start; }
+  .selected-panel { padding: 1.25rem; }
   .selected-paper, .selected-paper:first-child, .selected-paper:last-child { grid-template-columns: 1fr; gap: .8rem; }
   .selected-contribution { margin-top: .25rem; }
   .focus-grid { grid-template-columns: 1fr; }
