@@ -5,6 +5,7 @@ import siteContentData from "../content/site-content.json";
 import VisitorStats from "./VisitorStats";
 import PublicationLibrary, { SelectedPublications } from "./PublicationLibrary";
 import { scrollToId, topics, type Publication } from "./research";
+import { profilePhoto } from "./profilePhoto";
 
 type Education = {
   period: string;
@@ -444,6 +445,7 @@ export default function Home() {
       <section id="about" className="section about-section">
         <div className="about-label">
           <p className="eyebrow">ABOUT</p>
+          <img {...profilePhoto} className="profile-portrait" loading="eager" decoding="async" />
         </div>
         <div className="about-copy">
           <p className="lead-copy">
