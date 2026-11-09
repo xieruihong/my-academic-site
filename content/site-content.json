@@ -1,13 +1,14 @@
 {
   "profile": {
     "name": "Ruihong Xie",
-    "title": "PhD · Bridge Wind Engineering & Vibration Control",
-    "affiliation": "PhD, Tongji University · Research experience at the University of Toronto",
-    "location": "Shanghai / Toronto",
-    "email": "xrh@tongji.edu.cn",
-    "emailSecondary": "ruihong.xie@mail.utoronto.ca",
+    "title": "PhD · Wind-sensitive Structures & Vibration Control",
+    "affiliation": "Incoming Postdoctoral Researcher · City University of Hong Kong · From December 2026",
+    "location": "Hong Kong · From December 2026",
+    "email": "ruihongxie33@gmail.com",
+    "emailSecondary": "xrh@tongji.edu.cn",
     "status": "OPEN TO RESEARCH COLLABORATION",
-    "statement": "Developing lightweight, resilient nonlinear control and energy-harvesting strategies for wind-induced vibrations in long-span bridges."
+    "statement": "Developing vibration-control and energy-harvesting strategies for wind-sensitive structures, with forthcoming postdoctoral research on control of floating offshore wind turbines.",
+    "updated": "November 2026"
   },
   "links": {
     "scholar": "https://scholar.google.com/citations?user=34ISQHEAAAAJ&hl=en",
@@ -377,10 +378,11 @@
     }
   ],
   "updates": [
+    { "date": "12.01", "year": "2026", "text": "Upcoming postdoctoral research at City University of Hong Kong from December 2026, working with Prof. Qiusheng Li on control of floating offshore wind turbines.", "kind": "UPCOMING", "href": "#experience" },
     { "date": "08.20", "year": "2026", "text": "Graduated with a PhD in Civil Engineering from Tongji University, following visiting doctoral research at the University of Toronto.", "kind": "MILESTONE", "href": "#experience" },
     { "date": "04.29", "year": "2026", "text": "Research on improving the buffeting and flutter performance of long-span bridges using nonlinear energy sink inerters published in JWEIA.", "kind": "PUBLICATION", "href": "#paper-1" },
     { "date": "03.01", "year": "2026", "text": "Research on real-time hybrid testing of bridge vortex-induced vibration control published in Engineering Structures.", "kind": "PUBLICATION", "href": "#paper-2" },
-    { "date": "07.01", "year": "2025", "text": "First Prize for Outstanding Paper at the 8th National Wind Engineering Graduate Forum.", "kind": "AWARD" },
+    { "date": "07.31", "year": "2025", "text": "First Prize for Outstanding Paper at the 8th National Wind Engineering Graduate Forum.", "kind": "AWARD" },
     { "date": "11.01", "year": "2024", "text": "Awarded National Natural Science Foundation of China funding for coordinated wind-vibration control and energy harvesting.", "kind": "GRANT" }
   ],
   "focusAreas": [
@@ -388,7 +390,7 @@
       "index": "01",
       "title": "Wind-induced Vibration Control",
       "en": "Wind-induced Vibration Control",
-      "text": "Developing interpretable, design-oriented approaches to mitigate vortex-induced vibrations, buffeting, and flutter in long-span bridges."
+      "text": "Developing interpretable, design-oriented control strategies for wind-sensitive structures, building on bridge vibration mitigation and extending towards floating offshore wind turbine control."
     },
     {
       "index": "02",
@@ -410,6 +412,12 @@
     }
   ],
   "education": [
+    {
+      "period": "From Dec 2026 (upcoming)",
+      "institution": "City University of Hong Kong",
+      "degree": "Incoming Postdoctoral Researcher",
+      "detail": "Control of floating offshore wind turbines; collaborating supervisor: Prof. Qiusheng Li"
+    },
     {
       "period": "Feb 2025 — Aug 2026",
       "institution": "University of Toronto",
@@ -451,7 +459,7 @@
     { "year": "2026", "title": "Outstanding Graduate, Tongji University" },
     { "year": "2025–2026", "title": "China Scholarship Council Scholarship for Overseas Postgraduate Study" },
     { "year": "2025", "title": "Outstanding Doctoral Student Scholarship, Tongji University" },
-    { "year": "2025", "title": "First Prize for Outstanding Paper, 8th National Wind Engineering Graduate Forum" },
+    { "year": "2025", "date": "31 Jul 2025", "title": "First Prize for Outstanding Paper, 8th National Wind Engineering Graduate Forum" },
     { "year": "2024", "title": "School of Civil Engineering Award, Tongji University" },
     { "year": "2022", "title": "Outstanding Master's Thesis, Hunan Province" },
     { "year": "2022", "title": "Outstanding Graduate, Hunan Province" },
