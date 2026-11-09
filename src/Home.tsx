@@ -271,7 +271,7 @@ function AcademicPath() {
           <p className="eyebrow">ACADEMIC PATH</p>
           <h2>Education & research experience</h2>
         </div>
-        <p>From bridge engineering and impact dynamics to vibration control of wind-sensitive structures, with forthcoming postdoctoral research on floating offshore wind turbines at City University of Hong Kong.</p>
+        <p>From bridge engineering and impact dynamics to vibration control of wind-sensitive structures, including research on floating offshore wind turbines at City University of Hong Kong.</p>
       </div>
       <div className="career-grid">
         <div className="education-list">
@@ -452,7 +452,7 @@ export default function Home() {
           </p>
           <div className="about-columns">
             <p>I graduated with a PhD in Civil Engineering from Tongji University on 20 August 2026. During my doctoral studies, I conducted visiting research at the University of Toronto. My doctoral research focused on the theory, design, and experimental validation of nonlinear energy sink inerters for controlling vortex-induced vibrations, buffeting, and flutter in bridges.</p>
-            <p>From December 2026, I will undertake postdoctoral research at City University of Hong Kong with Prof. Qiusheng Li, focusing on control of floating offshore wind turbines. Building on my earlier work in bridge impact dynamics and structural protection at Hunan University, I aim to extend vibration-control and energy-harvesting strategies to a broader range of wind-sensitive structures.</p>
+            <p>Postdoctoral Researcher at City University of Hong Kong (from December 2026), with Prof. Qiusheng Li as collaborating supervisor. Research focus: control of floating offshore wind turbines. My research builds on earlier work in bridge impact dynamics and structural protection at Hunan University and addresses vibration control and energy harvesting across wind-sensitive structures.</p>
           </div>
           <div className="profile-links">
             <a href={LINKS.scholar} target="_blank" rel="noreferrer">Google Scholar ↗</a>

@@ -30,7 +30,8 @@ test("homepage keeps section order and shares the updated profile with the CV", 
   assert.ok(html.includes('href="#selected"'), "Hero still links to featured research");
   assert.ok(html.includes('href="#publications"'), "Full-library links remain valid");
   for (const [name, page] of [["homepage", html], ["CV", renderCv()]]) {
-    assert.ok(page.includes("Incoming Postdoctoral Researcher"), `${name} does not prematurely claim a current postdoctoral role`);
+    assert.ok(page.includes("Postdoctoral Researcher") && page.includes("From Dec 2026"), `${name} shows the role and start date`);
+    assert.ok(!/incoming|upcoming|forthcoming|will undertake|planned|expected/i.test(page), `${name} has no future-status qualifiers`);
     assert.ok(page.includes("City University of Hong Kong") && page.includes("Dec 2026"));
     assert.ok(page.includes("Prof. Qiusheng Li") && page.includes("floating offshore wind turbines"));
     assert.ok(page.includes("Wind-sensitive Structures") && page.includes('href="mailto:ruihongxie33@gmail.com"'));

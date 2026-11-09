@@ -2,12 +2,12 @@
   "profile": {
     "name": "Ruihong Xie",
     "title": "PhD · Wind-sensitive Structures & Vibration Control",
-    "affiliation": "Incoming Postdoctoral Researcher · City University of Hong Kong · From December 2026",
+    "affiliation": "Postdoctoral Researcher · City University of Hong Kong · From December 2026",
     "location": "Hong Kong · From December 2026",
     "email": "ruihongxie33@gmail.com",
     "emailSecondary": "xrh@tongji.edu.cn",
     "status": "OPEN TO RESEARCH COLLABORATION",
-    "statement": "Developing vibration-control and energy-harvesting strategies for wind-sensitive structures, with forthcoming postdoctoral research on control of floating offshore wind turbines.",
+    "statement": "Developing vibration-control and energy-harvesting strategies for wind-sensitive structures, including control of floating offshore wind turbines.",
     "updated": "November 2026"
   },
   "links": {
@@ -378,7 +378,7 @@
     }
   ],
   "updates": [
-    { "date": "12.01", "year": "2026", "text": "Upcoming postdoctoral research at City University of Hong Kong from December 2026, working with Prof. Qiusheng Li on control of floating offshore wind turbines.", "kind": "UPCOMING", "href": "#experience" },
+    { "date": "12.01", "year": "2026", "text": "Postdoctoral Researcher at City University of Hong Kong · From December 2026 · Collaborating supervisor: Prof. Qiusheng Li · Research: control of floating offshore wind turbines.", "kind": "RESEARCH", "href": "#experience" },
     { "date": "08.20", "year": "2026", "text": "Graduated with a PhD in Civil Engineering from Tongji University, following visiting doctoral research at the University of Toronto.", "kind": "MILESTONE", "href": "#experience" },
     { "date": "04.29", "year": "2026", "text": "Research on improving the buffeting and flutter performance of long-span bridges using nonlinear energy sink inerters published in JWEIA.", "kind": "PUBLICATION", "href": "#paper-1" },
     { "date": "03.01", "year": "2026", "text": "Research on real-time hybrid testing of bridge vortex-induced vibration control published in Engineering Structures.", "kind": "PUBLICATION", "href": "#paper-2" },
@@ -413,9 +413,9 @@
   ],
   "education": [
     {
-      "period": "From Dec 2026 (upcoming)",
+      "period": "From Dec 2026",
       "institution": "City University of Hong Kong",
-      "degree": "Incoming Postdoctoral Researcher",
+      "degree": "Postdoctoral Researcher",
       "detail": "Control of floating offshore wind turbines; collaborating supervisor: Prof. Qiusheng Li"
     },
     {
