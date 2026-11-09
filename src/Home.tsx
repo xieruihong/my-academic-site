@@ -24,6 +24,7 @@ type SiteContent = {
     emailSecondary: string;
     status: string;
     statement: string;
+    updated: string;
   };
   links: {
     scholar: string;
@@ -37,7 +38,7 @@ type SiteContent = {
   focusAreas: Array<{ index: string; title: string; en: string; text: string }>;
   education: Education[];
   projects: Array<{ period: string; title: string; meta: string }>;
-  awards: Array<{ year: string; title: string }>;
+  awards: Array<{ year: string; date?: string; title: string }>;
 };
 
 type OrcidWorkSummary = {
@@ -270,7 +271,7 @@ function AcademicPath() {
           <p className="eyebrow">ACADEMIC PATH</p>
           <h2>Education & research experience</h2>
         </div>
-        <p>From bridge engineering and impact dynamics to nonlinear vibration control, with collaborative research at Tongji University and the University of Toronto.</p>
+        <p>From bridge engineering and impact dynamics to vibration control of wind-sensitive structures, with forthcoming postdoctoral research on floating offshore wind turbines at City University of Hong Kong.</p>
       </div>
       <div className="career-grid">
         <div className="education-list">
@@ -303,12 +304,12 @@ function AcademicPath() {
         <div className="awards-grid">
           {awards.slice(0, 6).map((award) => (
             <article key={`${award.year}-${award.title}`}>
-              <span>{award.year}</span>
+              <span>{award.date ?? award.year}</span>
               <p>{award.title}</p>
             </article>
           ))}
         </div>
-        <details className="more-honours"><summary>View earlier honours</summary><div className="awards-grid">{awards.slice(6).map(award => <article key={`${award.year}-${award.title}`}><span>{award.year}</span><p>{award.title}</p></article>)}</div></details>
+        <details className="more-honours"><summary>View earlier honours</summary><div className="awards-grid">{awards.slice(6).map(award => <article key={`${award.year}-${award.title}`}><span>{award.date ?? award.year}</span><p>{award.title}</p></article>)}</div></details>
       </div>
     </section>
   );
@@ -447,11 +448,11 @@ export default function Home() {
         </div>
         <div className="about-copy">
           <p className="lead-copy">
-            My research connects <span>bridge wind engineering, nonlinear dynamics, and structural resilience</span> to keep long-span bridges safe, stable, and efficient.
+            My research connects <span>wind engineering, nonlinear dynamics, and structural resilience</span> to keep wind-sensitive structures safe, stable, and efficient.
           </p>
           <div className="about-columns">
-            <p>I graduated with a PhD in Civil Engineering from Tongji University on 20 August 2026. During my doctoral studies, I conducted visiting research at the University of Toronto. My work focuses on the theory, design, and experimental validation of nonlinear energy sink inerters for controlling vortex-induced vibrations, buffeting, and flutter in bridges.</p>
-            <p>Previously, I studied bridge impact dynamics and composite protective structures at Hunan University. I now explore coordinated vibration control and energy harvesting, bringing structural safety, device efficiency, and practical implementation into a common design framework.</p>
+            <p>I graduated with a PhD in Civil Engineering from Tongji University on 20 August 2026. During my doctoral studies, I conducted visiting research at the University of Toronto. My doctoral research focused on the theory, design, and experimental validation of nonlinear energy sink inerters for controlling vortex-induced vibrations, buffeting, and flutter in bridges.</p>
+            <p>From December 2026, I will undertake postdoctoral research at City University of Hong Kong with Prof. Qiusheng Li, focusing on control of floating offshore wind turbines. Building on my earlier work in bridge impact dynamics and structural protection at Hunan University, I aim to extend vibration-control and energy-harvesting strategies to a broader range of wind-sensitive structures.</p>
           </div>
           <div className="profile-links">
             <a href={LINKS.scholar} target="_blank" rel="noreferrer">Google Scholar ↗</a>
@@ -498,7 +499,7 @@ export default function Home() {
             <p className="eyebrow">NEWS & MILESTONES</p>
             <h2>Research updates</h2>
           </div>
-          <span className="issue-number">PROFILE UPDATED · 2026</span>
+          <span className="issue-number">PROFILE UPDATED · {PROFILE.updated.toUpperCase()}</span>
         </div>
         <div className="updates-list">
           {updates.map((update) => (
@@ -525,7 +526,7 @@ export default function Home() {
           <a href={`mailto:${PROFILE.emailSecondary}`}>{PROFILE.emailSecondary}</a>
         </div>
         <div className="footer-bottom">
-          <div><strong>{PROFILE.name}</strong><span>BRIDGE · WIND · VIBRATION</span></div>
+          <div><strong>{PROFILE.name}</strong><span>STRUCTURES · WIND · VIBRATION</span></div>
           <p>© 2026 · ACADEMIC PROFILE</p>
           <div className="social-links">
             <a href={LINKS.scholar} target="_blank" rel="noreferrer">SCHOLAR</a>
